@@ -100,8 +100,8 @@ return {
       end
 
       return {
-        notify_on_error = false,
-        formatters_by_ft,
+        notify_on_error = true,
+        formatters_by_ft = formatters_by_ft,
         format_on_save = function(bufnr)
           if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
             return
@@ -109,7 +109,7 @@ return {
 
           return {
             timeout_ms = 500,
-            lsp_format = 'fallback'
+            lsp_format = 'fallback',
           }
         end,
       }
@@ -200,7 +200,7 @@ return {
     event = 'BufRead',
     dependencies = {
       { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
-      { 'nvim-lua/plenary.nvim' },  -- for curl, log wrapper
+      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
     opts = {
       mappings = {
