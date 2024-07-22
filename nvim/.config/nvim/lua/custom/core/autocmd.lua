@@ -16,13 +16,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*',
-  callback = function(args)
-    require('conform').format { bufnr = args.buf }
-  end,
-})
-
 vim.api.nvim_create_user_command('WipeWindowlessBufs', function()
   local bufinfos = vim.fn.getbufinfo { buflisted = true }
   vim.tbl_map(function(bufinfo)

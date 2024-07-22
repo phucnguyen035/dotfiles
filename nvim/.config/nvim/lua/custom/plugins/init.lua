@@ -60,7 +60,7 @@ return {
           local current = vim.g.disable_autoformat
           local next = not current
           vim.g.disable_autoformat = next
-          vim.notify('Autoformat ' .. (next and 'disabled' or 'enabled') .. '(global)')
+          vim.notify('Autoformat ' .. (next and 'disabled' or 'enabled') .. ' (global)')
         end
       end, {
         desc = 'Toggle autoformat-on-save',
