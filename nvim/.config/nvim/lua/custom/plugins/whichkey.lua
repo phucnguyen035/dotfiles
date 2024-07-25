@@ -8,6 +8,7 @@ return {
       { '<leader>c', group = 'code/copilot' },
       { '<leader>cc', group = 'chat', icon = ' ' },
       { '<leader>ct', group = 'toggle' },
+      { '<leader>h', group = 'hunk', icon = ' ' },
       { '<leader>f', group = 'file' },
       { '<leader>s', group = 'search' },
       { '<leader>g', group = 'git' },
