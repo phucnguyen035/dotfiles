@@ -25,6 +25,7 @@ end)
 
 local c = wezterm.config_builder()
 
+c.disable_default_key_bindings = true
 c.color_scheme = "Catppuccin Mocha"
 c.default_cwd = wezterm.home_dir .. "/Projects"
 -- c.default_prog = { "/Users/phucnguyen/.cargo/bin/zellij", "-l", "welcome" }
