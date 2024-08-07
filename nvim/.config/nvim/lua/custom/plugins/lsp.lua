@@ -43,7 +43,6 @@ return {
       { 'williamboman/mason.nvim', config = true, cmd = 'Mason' },
       'williamboman/mason-lspconfig.nvim',
       -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
     },
     config = function()
@@ -229,7 +228,12 @@ return {
             mode = 'problems',
           },
           -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
-          workingDirectories = { mode = 'auto' },
+          workingDirectories = {
+            mode = 'auto',
+          },
+          experimental = {
+            useFlatConfig = true,
+          },
         },
         vtsls = {
           typescript = {
