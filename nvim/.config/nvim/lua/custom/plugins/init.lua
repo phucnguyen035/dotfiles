@@ -93,10 +93,11 @@ return {
         'typescript',
         'typescriptreact',
         'html',
+        'json',
       }
 
       for _, ft in ipairs(frontend) do
-        formatters_by_ft[ft] = { 'prettierd', 'biome', stop_after_first = true }
+        formatters_by_ft[ft] = { 'biome-check', 'prettierd', stop_after_first = true }
       end
 
       return {
