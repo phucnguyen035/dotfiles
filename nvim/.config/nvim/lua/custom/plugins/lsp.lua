@@ -213,6 +213,20 @@ return {
         svelte = {},
         volar = {},
         tailwindcss = {
+          root_dir = function(fname)
+            local lspconfig = require 'lspconfig'
+            local root_pattern = lspconfig.util.root_pattern(
+              'tailwind.config.js',
+              'tailwind.config.cjs',
+              'tailwind.config.mjs',
+              'tailwind.config.ts',
+              'tailwind.config.mts',
+              'tailwind.config.cts'
+            )
+
+            return root_pattern(fname)
+          end,
+
           tailwindCSS = {
             experimental = {
               classRegex = {
