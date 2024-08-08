@@ -377,6 +377,11 @@ return {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
+            root_dir = (servers[server_name] or {}).root_dir or nil,
+            handlers = {
+              ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+              ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+            },
           }
         end,
       }
@@ -399,12 +404,6 @@ return {
 
           -- Only attach to clients that support document formatting
           if not client.supports_method 'textDocument/formatting' then
-            return
-          end
-
-          -- Tsserver usually works poorly. Sorry you work with bad languages
-          -- You can remove this line if you know what you're doing :)
-          if client.name == 'tsserver' then
             return
           end
 
