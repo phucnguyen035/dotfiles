@@ -250,27 +250,6 @@ return {
       },
     },
   },
-  -- Zen Mode
-  {
-    'folke/zen-mode.nvim',
-    cond = not vim.g.vscode,
-    dependencies = { 'folke/twilight.nvim' },
-    cmd = 'ZenMode',
-    opts = {
-      window = {
-        backdrop = 1,
-        width = 150,
-      },
-      plugins = {
-        twilight = { enabled = true },
-        tmux = { enabled = true },
-        wezterm = { enabled = true, font = 15 },
-      },
-    },
-    keys = {
-      { 'gz', '<cmd>ZenMode<cr>', desc = '[G]o [Z]en Mode', silent = true },
-    },
-  },
   {
     'nvim-tree/nvim-web-devicons',
     lazy = true,
