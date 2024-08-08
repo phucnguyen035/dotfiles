@@ -7,11 +7,6 @@ return {
     init = function()
       require('catppuccin').setup {
         transparent_background = true,
-        dim_inactive = {
-          enabled = true,
-          shade = 'dark',
-          percentage = 0.15,
-        },
         integrations = {
           harpoon = true,
           lsp_trouble = true,

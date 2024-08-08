@@ -49,8 +49,8 @@ c.use_fancy_tab_bar = false
 c.tab_bar_at_bottom = false
 c.show_new_tab_button_in_tab_bar = false
 c.window_decorations = "RESIZE"
-c.window_background_opacity = 0.9
-c.macos_window_background_blur = 25
+c.window_background_opacity = 0.7
+c.macos_window_background_blur = 50
 c.max_fps = 120
 
 -- KEYBINDINGS
