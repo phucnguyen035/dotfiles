@@ -9,6 +9,11 @@ return {
     },
   },
   {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {},
+  },
+  {
     'hrsh7th/nvim-cmp',
     cond = not vim.g.vscode,
     event = 'InsertEnter',
@@ -23,12 +28,14 @@ return {
       'onsails/lspkind-nvim',
     },
     config = function()
-      -- [[ Configure nvim-cmp ]]
-      -- See `:help cmp`
       local cmp = require 'cmp'
       local lspkind = require 'lspkind'
       local luasnip = require 'luasnip'
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+
       require('luasnip.loaders.from_vscode').lazy_load()
+
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
       cmp.setup {
         snippet = {
@@ -37,18 +44,33 @@ return {
           end,
         },
 
-        preselect = cmp.PreselectMode.None,
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
 
-        mapping = cmp.mapping.preset.insert {
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        preselect = cmp.PreselectMode.Item,
+
+        mapping = {
+          ['<C-j>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+          ['<C-k>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-q>'] = cmp.mapping.close(),
           ['<C-Space>'] = cmp.mapping.complete {},
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
+          ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              if luasnip.expandable() then
+                luasnip.expand()
+              else
+                cmp.confirm {
+                  select = true,
+                }
+              end
+            else
+              fallback()
+            end
+          end),
           ['<Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
@@ -70,15 +92,6 @@ return {
             before = require('tailwind-tools.cmp').lspkind_format,
           },
         },
-
-        -- formatting = {
-        --   format = lspkind.cmp_format {
-        --     mode = 'symbol_text',
-        --     maxwidth = 50,
-        --     ellipsis_char = '...',
-        --     symbol_map = { Copilot = '' },
-        --   },
-        -- },
 
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
