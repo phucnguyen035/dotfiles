@@ -213,20 +213,6 @@ return {
         svelte = {},
         volar = {},
         tailwindcss = {
-          root_dir = function(fname)
-            local lspconfig = require 'lspconfig'
-            local root_pattern = lspconfig.util.root_pattern(
-              'tailwind.config.js',
-              'tailwind.config.cjs',
-              'tailwind.config.mjs',
-              'tailwind.config.ts',
-              'tailwind.config.mts',
-              'tailwind.config.cts'
-            )
-
-            return root_pattern(fname)
-          end,
-
           tailwindCSS = {
             experimental = {
               classRegex = {
@@ -363,6 +349,23 @@ return {
       }
 
       -- Setup neovim lua configuration
+      local root_config = {
+        tailwindcss = {
+          root_dir = function(fname)
+            local lspconfig = require 'lspconfig'
+            local root_pattern = lspconfig.util.root_pattern(
+              'tailwind.config.js',
+              'tailwind.config.cjs',
+              'tailwind.config.mjs',
+              'tailwind.config.ts',
+              'tailwind.config.mts',
+              'tailwind.config.cts'
+            )
+
+            return root_pattern(fname)
+          end,
+        },
+      }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -391,7 +394,7 @@ return {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
-            root_dir = (servers[server_name] or {}).root_dir or nil,
+            root_dir = (root_config[server_name] or {}).root_dir,
             handlers = {
               ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
               ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
