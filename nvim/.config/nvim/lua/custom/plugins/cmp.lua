@@ -1,3 +1,10 @@
+local function has_tailwind_lsp()
+  local clients = vim.lsp.get_clients { name = 'tailwindcss' }
+  local results = #clients > 0
+
+  return results
+end
+
 return {
   {
     'L3MON4D3/LuaSnip',
@@ -24,7 +31,6 @@ return {
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'rafamadriz/friendly-snippets',
-      'luckasRanarison/tailwind-tools.nvim',
       'onsails/lspkind-nvim',
     },
     config = function()
@@ -92,11 +98,11 @@ return {
           end, { 'i', 's' }),
         },
 
-        formatting = {
+        formatting = has_tailwind_lsp() and {
           format = lspkind.cmp_format {
             before = require('tailwind-tools.cmp').lspkind_format,
           },
-        },
+        } or nil,
 
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },

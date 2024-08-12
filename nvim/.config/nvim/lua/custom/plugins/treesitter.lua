@@ -144,7 +144,7 @@ return {
   },
   {
     'luckasRanarison/tailwind-tools.nvim',
-    event = 'BufRead',
+    lazy = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     opts = {
       conceal = {

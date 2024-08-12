@@ -409,6 +409,10 @@ return {
             return
           end
 
+          if client.name == 'tailwindcss' then
+            require('tailwind-tools').setup {}
+          end
+
           if client.supports_method 'textDocument/inlayHint' then
             vim.keymap.set('n', '<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { buffer = args.buffer })
