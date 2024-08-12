@@ -23,7 +23,7 @@ return {
   {
     'hrsh7th/nvim-cmp',
     cond = not vim.g.vscode,
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -64,24 +64,7 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-q>'] = cmp.mapping.close(),
           ['<C-Space>'] = cmp.mapping.complete {},
-          ['<CR>'] = cmp.mapping {
-            i = function(fallback)
-              if cmp.visible() and cmp.get_active_entry() then
-                if luasnip.expandable() then
-                  luasnip.expand()
-                else
-                  cmp.confirm {
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = false,
-                  }
-                end
-              else
-                fallback()
-              end
-            end,
-            s = cmp.mapping.confirm { select = true },
-            c = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
-          },
+          ['<CR>'] = cmp.mapping.confirm(),
           ['<Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
