@@ -99,6 +99,7 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
     dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/noice.nvim', 'AndreM222/copilot-lualine' },
     config = function()
       require('lualine').setup {
