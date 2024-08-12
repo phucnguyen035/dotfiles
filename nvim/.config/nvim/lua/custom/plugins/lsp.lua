@@ -395,10 +395,6 @@ return {
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
             root_dir = (root_config[server_name] or {}).root_dir,
-            handlers = {
-              ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-              ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
-            },
           }
         end,
       }
