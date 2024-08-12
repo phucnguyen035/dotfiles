@@ -49,7 +49,7 @@ return {
           documentation = cmp.config.window.bordered(),
         },
 
-        preselect = cmp.PreselectMode.Item,
+        preselect = cmp.PreselectMode.None,
 
         mapping = {
           ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
@@ -58,19 +58,24 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-q>'] = cmp.mapping.close(),
           ['<C-Space>'] = cmp.mapping.complete {},
-          ['<CR>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              if luasnip.expandable() then
-                luasnip.expand()
+          ['<CR>'] = cmp.mapping {
+            i = function(fallback)
+              if cmp.visible() and cmp.get_active_entry() then
+                if luasnip.expandable() then
+                  luasnip.expand()
+                else
+                  cmp.confirm {
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = false,
+                  }
+                end
               else
-                cmp.confirm {
-                  select = true,
-                }
+                fallback()
               end
-            else
-              fallback()
-            end
-          end),
+            end,
+            s = cmp.mapping.confirm { select = true },
+            c = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+          },
           ['<Tab>'] = cmp.mapping(function(fallback)
             if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
