@@ -94,6 +94,7 @@ return {
         'typescriptreact',
         'html',
         'json',
+        'jsonc',
       }
 
       local frontend_format = function()
