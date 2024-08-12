@@ -96,8 +96,18 @@ return {
         'json',
       }
 
+      local frontend_format = function()
+        local results = vim.fs.find('biome.json', {})
+        local has_biome = #results > 0
+        if has_biome then
+          return { 'biome-check' }
+        else
+          return { 'prettierd' }
+        end
+      end
+
       for _, ft in ipairs(frontend) do
-        formatters_by_ft[ft] = { 'biome-check', 'prettierd', stop_after_first = true }
+        formatters_by_ft[ft] = frontend_format
       end
 
       return {
