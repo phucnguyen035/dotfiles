@@ -18,6 +18,7 @@ return {
       { '<leader>w', group = 'workspace' },
       { '<leader>t', group = 'toggle' },
       { '<leader>cf', '<cmd>Format<cr>', desc = 'Format code', mode = { 'n', 'v' } },
+      { '<leader>ch', ':nohlsearch<cr>', desc = 'Clear search highlights', silent = true },
       { '<leader>tf', '<cmd>FormatToggle<cr>', desc = 'Toggle format (global)' },
       { '<leader>tF', '<cmd>FormatToggle!<cr>', desc = 'Toggle format (buffer)' },
       { '<leader>bb', '<cmd>b#<cr>', desc = 'Switch to last buffer' },
