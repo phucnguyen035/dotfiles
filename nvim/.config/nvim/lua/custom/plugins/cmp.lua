@@ -96,12 +96,33 @@ return {
         } or nil,
 
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
+          {
+            name = 'nvim_lsp',
+            entry_filter = function(entry)
+              -- Filter out lsp snippets
+              if entry:get_kind() == 15 then
+                return false
+              end
+
+              return true
+            end,
+          },
           { name = 'luasnip' },
           { name = 'lazydev', group_index = 0 },
         }, {
           { name = 'buffer' },
         }),
+
+        sorting = {
+          comparators = {
+            cmp.config.compare.exact,
+            cmp.config.compare.offset,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.kind,
+            cmp.config.compare.scopes,
+            cmp.config.compare.sort_text,
+          },
+        },
       }
 
       cmp.setup.cmdline('/', {
