@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Wipe out all but current buffer
 vim.api.nvim_create_user_command('WipeWindowlessBufs', function()
   local bufinfos = vim.fn.getbufinfo { buflisted = 1 }
   vim.tbl_map(function(bufinfo)
@@ -25,3 +26,19 @@ vim.api.nvim_create_user_command('WipeWindowlessBufs', function()
     end
   end, bufinfos)
 end, { desc = 'Wipeout all buffers not shown in a window' })
+
+-- Remember folds
+local remember_fold_group = vim.api.nvim_create_augroup('RememberFold', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+  group = remember_fold_group,
+  pattern = { '*.*' },
+  desc = 'save view (folds), when closing file',
+  command = 'mkview!',
+})
+
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  group = remember_fold_group,
+  pattern = { '*.*' },
+  desc = 'load view (folds), when opening file',
+  command = 'silent! loadview',
+})
