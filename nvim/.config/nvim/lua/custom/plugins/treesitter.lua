@@ -5,6 +5,7 @@ return {
     event = 'BufRead',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-context',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'lukas-reineke/indent-blankline.nvim',
       'windwp/nvim-ts-autotag',
@@ -140,6 +141,21 @@ return {
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       }
+    end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    lazy = true,
+    opts = {
+      max_lines = 3,
+    },
+    config = function(_, opts)
+      local tc = require 'treesitter-context'
+      tc.setup(opts)
+
+      vim.keymap.set('n', '[c', function()
+        tc.go_to_context(vim.v.count1)
+      end, { silent = true, desc = 'TS: Go to context' })
     end,
   },
   {
