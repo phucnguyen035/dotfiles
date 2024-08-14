@@ -115,14 +115,20 @@ return {
         },
         sections = {
           lualine_a = {
-            'branch',
+            {
+              'mode',
+              fmt = function(str)
+                return str:sub(1, 1)
+              end,
+            },
           },
 
           lualine_b = {
-            'diagnostics',
+            'branch',
           },
 
           lualine_c = {
+            'diagnostics',
             'diff',
             '%=',
             { 'filename', path = 1, shorting_target = 10 },
@@ -132,10 +138,6 @@ return {
             {
               require('noice').api.status.command.get_hl,
               cond = require('noice').api.status.command.has,
-            },
-            {
-              require('noice').api.status.mode.get_hl,
-              cond = require('noice').api.status.mode.has,
             },
             'copilot',
           },
