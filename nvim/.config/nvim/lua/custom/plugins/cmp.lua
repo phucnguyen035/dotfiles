@@ -36,6 +36,7 @@ return {
     },
     config = function()
       local cmp = require 'cmp'
+      local types = require 'cmp.types'
       local lspkind = require 'lspkind'
       local luasnip = require 'luasnip'
       local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
@@ -93,18 +94,25 @@ return {
           end, { 'i', 's' }),
         },
 
-        formatting = has_tailwind_lsp() and {
+        formatting = {
           format = lspkind.cmp_format {
-            before = require('tailwind-tools.cmp').lspkind_format,
+            before = function(entry, item)
+              if has_tailwind_lsp() then
+                require('tailwind-tools.cmp').lspkind_format(entry, item)
+              end
+
+              return item
+            end,
           },
-        } or nil,
+        },
 
         sources = cmp.config.sources({
           {
             name = 'nvim_lsp',
             entry_filter = function(entry)
+              local kind = entry:get_kind()
               -- Filter out lsp snippets
-              if entry:get_kind() == 15 then
+              if kind == types.lsp.CompletionItemKind.Snippet then
                 return false
               end
 
@@ -118,10 +126,12 @@ return {
         }),
 
         sorting = {
+          priority_weight = 2,
           comparators = {
             cmp.config.compare.exact,
             cmp.config.compare.offset,
             cmp.config.compare.recently_used,
+            cmp.config.compare.score,
             cmp.config.compare.kind,
             cmp.config.compare.scopes,
             cmp.config.compare.sort_text,
