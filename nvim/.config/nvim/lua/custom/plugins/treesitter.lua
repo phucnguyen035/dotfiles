@@ -8,7 +8,6 @@ return {
       'nvim-treesitter/nvim-treesitter-context',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'lukas-reineke/indent-blankline.nvim',
-      'windwp/nvim-ts-autotag',
     },
     build = ':TSUpdate',
     config = function()
@@ -27,13 +26,6 @@ return {
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       require('nvim-treesitter.configs').setup {
-        autotag = {
-          enable = true,
-          enable_rename = true,
-          enable_close = true,
-          enable_close_on_slash = true,
-        },
-
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
           -- My stack
@@ -131,6 +123,8 @@ return {
           },
         },
       }
+
+      require('nvim-ts-autotag').setup()
     end,
   },
   {
@@ -168,5 +162,10 @@ return {
         min_length = 50,
       },
     },
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    lazy = true,
+    opts = {},
   },
 }
