@@ -43,7 +43,13 @@ return {
 
       require('luasnip.loaders.from_vscode').lazy_load()
 
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+      cmp.event:on('confirm_done', function(evt)
+        local ts_utils = require 'nvim-treesitter.ts_utils'
+        local name = ts_utils.get_node_at_cursor():type()
+        if name ~= 'named_imports' then
+          cmp_autopairs.on_confirm_done()(evt)
+        end
+      end)
 
       cmp.setup {
         snippet = {
