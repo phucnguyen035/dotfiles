@@ -41,7 +41,7 @@ return {
       local luasnip = require 'luasnip'
       local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
 
-      require('luasnip.loaders.from_vscode').lazy_load()
+      require('luasnip.loaders.from_vscode').lazy_load { paths = '~/.config/nvim/my_snippets' }
 
       cmp.event:on('confirm_done', function(evt)
         local ts_utils = require 'nvim-treesitter.ts_utils'
