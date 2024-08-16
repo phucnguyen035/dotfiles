@@ -6,7 +6,6 @@ return {
     spec = {
       { '<leader>q', group = 'quit' },
       { '<leader>c', group = 'code/copilot' },
-      { '<leader>cc', group = 'chat', icon = ' ' },
       { '<leader>ct', group = 'toggle' },
       { '<leader>h', group = 'hunk', icon = ' ' },
       { '<leader>f', group = 'file' },
