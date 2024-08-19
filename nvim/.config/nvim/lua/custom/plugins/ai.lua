@@ -54,7 +54,7 @@ return {
               role = '${user}',
               contains_code = true,
               content = function()
-                return 'You are an expert at following the Conventional Commit specification. Be short and concise. Given the git diff listed below, please generate a commit message for me:'
+                return 'You are an expert at following the Conventional Commit specification. Be short and concise. Do not capitalize. Given the git diff listed below, please generate a commit message for me:'
                   .. '\n\n```\n'
                   .. vim.fn.system 'git diff --staged'
                   .. '\n```'
