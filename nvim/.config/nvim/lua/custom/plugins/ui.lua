@@ -100,7 +100,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
-    dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/noice.nvim', 'AndreM222/copilot-lualine' },
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'folke/noice.nvim' },
     config = function()
       require('lualine').setup {
         options = {
@@ -134,13 +134,7 @@ return {
             { 'filename', path = 1, shorting_target = 10 },
           },
 
-          lualine_x = {
-            {
-              require('noice').api.status.command.get_hl,
-              cond = require('noice').api.status.command.has,
-            },
-            'copilot',
-          },
+          lualine_x = {},
           lualine_y = { 'filetype', 'progress' },
           lualine_z = {
             { 'location', separator = { right = '' }, left_padding = 2 },
