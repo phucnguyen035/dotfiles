@@ -44,6 +44,8 @@ map('x', 'zV', 'zMzO', { desc = 'Close all except current cursor line', silent =
 map('n', '<leader><tab>[', '<cmd>tabprevious<cr>', { desc = 'Previous tab' })
 map('n', '<leader><tab>]', '<cmd>tabnext<cr>', { desc = 'Next tab' })
 map('n', '<leader>qq', '<cmd>qall<cr>', { desc = 'Quit all' })
+map('n', '<leader>r', '<cmd>e<cr>', { desc = 'Reload file' })
+map('n', '<leader>R', '<cmd>e!<cr>', { desc = 'Reload file (force)', silent = true, nowait = true })
 map({ 'n', 'i', 'x', 's' }, '<C-s>', '<cmd>w<cr>', { desc = 'Save file' })
 
 if vim.g.vscode then
