@@ -131,7 +131,7 @@ return {
             'diagnostics',
             'diff',
             '%=',
-            { 'filename', path = 1, shorting_target = 100 },
+            { 'filename', path = 4, shorting_target = 100 },
           },
 
           lualine_x = {},
