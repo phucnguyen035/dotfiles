@@ -64,5 +64,8 @@ return {
         },
       },
     },
+    keys = {
+      { '<leader>tc', '<cmd>CodeCompanionToggle<cr>', desc = 'Toggle Code companion' },
+    },
   },
 }
