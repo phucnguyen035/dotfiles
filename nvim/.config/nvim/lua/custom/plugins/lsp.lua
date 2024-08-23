@@ -119,6 +119,10 @@ return {
           client.server_capabilities.hoverProvider = false
         end
 
+        if client.name == 'tailwindcss' then
+          require('tailwind-tools').setup {}
+        end
+
         if client.supports_method 'textDocument/codeLens' then
           vim.lsp.codelens.refresh { bufnr = 0 }
           vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave' }, {
@@ -183,7 +187,7 @@ return {
           },
         },
         htmx = {
-          filetypes = { 'astro', 'templ' },
+          filetypes = { 'templ' },
         },
         templ = {},
         html = {},
@@ -407,10 +411,6 @@ return {
           local client = vim.lsp.get_client_by_id(client_id)
           if not client then
             return
-          end
-
-          if client.name == 'tailwindcss' then
-            require('tailwind-tools').setup {}
           end
 
           if client.supports_method 'textDocument/inlayHint' then
