@@ -65,8 +65,9 @@ return {
   {
     'NeogitOrg/neogit',
     dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff integration
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'sindrets/diffview.nvim',
     },
     cmd = 'Neogit',
     keys = {
@@ -83,6 +84,10 @@ return {
     },
     opts = {
       console_timeout = 5000,
+      integrations = {
+        telescope = true,
+        diffview = true,
+      },
     },
   },
 }
