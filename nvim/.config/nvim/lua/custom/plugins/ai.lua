@@ -14,58 +14,42 @@ return {
     },
   },
   {
-    'olimorris/codecompanion.nvim',
-    event = 'BufRead',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-telescope/telescope.nvim',
-      'stevearc/dressing.nvim',
-    },
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    version = false, -- set this if you want to always pull the latest change
     opts = {
-      adapters = {
-        anthropic = function()
-          return require('codecompanion.adapters').use('anthropic', {
-            env = {
-              api_key = 'cmd:op read op://Personal/CodeCompanion/credential --no-newline',
-            },
-          })
-        end,
-        openai = function()
-          return require('codecompanion.adapters').use('openai', {
-            env = {
-              api_key = 'cmd:op read op://Personal/CodeCompanion/openai --no-newline',
-            },
-          })
-        end,
-      },
-      strategies = {
-        chat = {
-          adapter = 'anthropic',
-        },
-        inline = {
-          adapter = 'openai',
-        },
-      },
-      default_prompts = {
-        ['Generate a Commit Message'] = {
-          prompts = {
-            {
-              role = '${user}',
-              contains_code = true,
-              content = function()
-                return 'You are an expert at following the Conventional Commit specification. Be short and concise. Do not capitalize. Given the git diff listed below, please generate a commit message for me:'
-                  .. '\n\n```\n'
-                  .. vim.fn.system 'git diff --staged'
-                  .. '\n```'
-              end,
+      -- add any opts here
+    },
+    build = 'make',
+    dependencies = {
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'zbirenbaum/copilot.lua', -- for providers='copilot'
+      {
+        -- support for image pasting
+        'HakonHarnes/img-clip.nvim',
+        event = 'VeryLazy',
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
             },
           },
         },
       },
-    },
-    keys = {
-      { '<leader>tc', '<cmd>CodeCompanionToggle<cr>', desc = 'Toggle Code companion' },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { 'markdown', 'Avante' },
+        },
+        ft = { 'markdown', 'Avante' },
+      },
     },
   },
 }

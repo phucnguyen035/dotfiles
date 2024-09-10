@@ -82,15 +82,15 @@ return {
               ['@class.outer'] = '<c-v>', -- blockwise
             },
           },
-          swap = {
-            enable = true,
-            swap_next = {
-              ['<leader>a'] = map { query = '@parameter.inner', desc = 'Swap with next parameter' },
-            },
-            swap_previous = {
-              ['<leader>A'] = map { query = '@parameter.inner', desc = 'Swap with previous parameter' },
-            },
-          },
+          -- swap = {
+          --   enable = true,
+          --   swap_next = {
+          --     ['<leader>a'] = map { query = '@parameter.inner', desc = 'Swap with next parameter' },
+          --   },
+          --   swap_previous = {
+          --     ['<leader>A'] = map { query = '@parameter.inner', desc = 'Swap with previous parameter' },
+          --   },
+          -- },
           move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
