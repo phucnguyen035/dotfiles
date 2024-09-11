@@ -58,7 +58,7 @@ return {
       },
     },
     keys = {
-      { '<leader>tc', '<cmd>CodeCompanionToggle<cr>', mode = { 'n', 'v' }, silent = true, noremap = true, desc = 'Toggle Code companion' },
+      { '<leader>A', '<cmd>CodeCompanionToggle<cr>', mode = { 'n', 'v' }, silent = true, noremap = true, desc = 'Toggle Code companion' },
       { '<leader>a', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, silent = true, noremap = true, desc = 'Code companion actions' },
       { 'ga', '<cmd>CodeCompanionAdd<cr>', mode = 'v', silent = true, noremap = true, desc = 'Add selection to chat' },
     },
