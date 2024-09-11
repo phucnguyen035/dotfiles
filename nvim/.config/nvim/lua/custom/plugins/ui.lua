@@ -124,7 +124,16 @@ return {
           },
 
           lualine_b = {
-            'branch',
+            {
+              'branch',
+              fmt = function(str)
+                local max_length = 30
+                if #str > max_length then
+                  return str:sub(1, max_length - 3) .. '...'
+                end
+                return str
+              end,
+            },
           },
 
           lualine_c = {
