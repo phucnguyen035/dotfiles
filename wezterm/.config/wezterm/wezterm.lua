@@ -54,6 +54,17 @@ c.macos_window_background_blur = 50
 c.max_fps = 120
 
 -- KEYBINDINGS
-c.keys = require("keys")
+c.keys = {
+	{
+		key = "v",
+		mods = "CMD",
+		action = act.PasteFrom("Clipboard"),
+	},
+	{
+		key = "w",
+		mods = "CMD",
+		action = act.CloseCurrentPane({ confirm = true }),
+	},
+}
 
 return c
