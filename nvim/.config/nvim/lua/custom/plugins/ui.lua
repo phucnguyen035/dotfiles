@@ -8,6 +8,10 @@ return {
     init = function()
       require('catppuccin').setup {
         transparent_background = true,
+        background = {
+          light = 'latte',
+          dark = 'mocha',
+        },
         integrations = {
           harpoon = true,
           lsp_trouble = true,
@@ -151,5 +155,9 @@ return {
         },
       }
     end,
+  },
+  {
+    'f-person/auto-dark-mode.nvim',
+    opts = {},
   },
 }
