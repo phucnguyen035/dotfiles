@@ -1,4 +1,21 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
+
+local function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+
+	return "Dark"
+end
+
+local function get_scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Mocha"
+	else
+		return "Catppuccin Latte"
+	end
+end
 
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	local overrides = window:get_config_overrides() or {}
@@ -26,9 +43,8 @@ end)
 local c = wezterm.config_builder()
 
 c.disable_default_key_bindings = true
-c.color_scheme = "Catppuccin Mocha"
+c.color_scheme = get_scheme_for_appearance(get_appearance())
 c.default_cwd = wezterm.home_dir .. "/Projects"
-c.default_prog = { "/opt/homebrew/bin/tmux", "new", "-A", " -s", "main" }
 c.font = wezterm.font("JetBrainsMono Nerd Font")
 c.font_size = 15
 c.line_height = 1.35
