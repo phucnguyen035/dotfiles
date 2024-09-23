@@ -44,13 +44,19 @@ return {
         ['Generate a Commit Message'] = {
           prompts = {
             {
-              role = '${user}',
-              contains_code = true,
+              role = 'user',
+              opts = {
+                contains_code = true,
+              },
               content = function()
-                return 'You are an expert at following the Conventional Commit specification. Be short and concise. Do not capitalize. Given the git diff listed below, please generate a commit message for me:'
-                  .. '\n\n```\n'
-                  .. vim.fn.system 'git diff --staged'
-                  .. '\n```'
+                return string.format(
+                  [[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message for me:
+                  ```diff
+                  %s
+                  ```
+                  ]],
+                  vim.fn.system 'git diff --staged'
+                )
               end,
             },
           },
