@@ -50,11 +50,12 @@ return {
               },
               content = function()
                 return string.format(
-                  [[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message for me:
-                  ```diff
-                  %s
-                  ```
-                  ]],
+                  [[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message at most 68 characters for me:
+
+```diff
+%s
+```
+]],
                   vim.fn.system 'git diff --staged'
                 )
               end,
