@@ -40,7 +40,7 @@ return {
           adapter = 'anthropic',
         },
       },
-      pre_defined_prompts = {
+      prompt_library = {
         ['Generate a Commit Message'] = {
           prompts = {
             {
@@ -65,9 +65,9 @@ return {
       },
     },
     keys = {
-      { '<leader>A', '<cmd>CodeCompanionToggle<cr>', mode = { 'n', 'v' }, silent = true, noremap = true, desc = 'Toggle Code companion' },
+      { '<leader>A', '<cmd>CodeCompanionChat Toggle<cr>', mode = { 'n', 'v' }, silent = true, noremap = true, desc = 'Toggle Code companion' },
       { '<leader>a', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, silent = true, noremap = true, desc = 'Code companion actions' },
-      { 'ga', '<cmd>CodeCompanionAdd<cr>', mode = 'v', silent = true, noremap = true, desc = 'Add selection to chat' },
+      { 'ga', '<cmd>CodeCompanionChat Add<cr>', mode = 'v', silent = true, noremap = true, desc = 'Add selection to chat' },
     },
   },
 }
