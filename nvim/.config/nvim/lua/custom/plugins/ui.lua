@@ -7,7 +7,7 @@ return {
     priority = 1000,
     init = function()
       require('catppuccin').setup {
-        transparent_background = true,
+        -- transparent_background = true,
         background = {
           light = 'latte',
           dark = 'mocha',
