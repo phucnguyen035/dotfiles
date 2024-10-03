@@ -50,7 +50,8 @@ return {
               },
               content = function()
                 return string.format(
-                  [[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message at most 68 characters for me:
+                  [[You are an expert at following the Conventional Commit specification. Given the git diff listed below, please generate a commit message for me.
+The title should have at most 68 characters, and the commit body is required if there are many changes. Do not capitalize the title or body.
 
 ```diff
 %s
