@@ -73,12 +73,12 @@ c.max_fps = 120
 c.keys = {
 	{
 		key = "v",
-		mods = "CMD",
+		mods = "SUPER",
 		action = act.PasteFrom("Clipboard"),
 	},
 	{
 		key = "w",
-		mods = "CMD",
+		mods = "SUPER",
 		action = act.CloseCurrentPane({ confirm = true }),
 	},
 }
