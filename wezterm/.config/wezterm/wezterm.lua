@@ -42,12 +42,13 @@ end)
 
 local c = wezterm.config_builder()
 
+c.freetype_load_target = "Light"
 c.disable_default_key_bindings = true
 c.color_scheme = get_scheme_for_appearance(get_appearance())
 c.default_cwd = wezterm.home_dir .. "/Projects"
 c.font = wezterm.font("JetBrainsMono Nerd Font")
 c.font_size = 15
-c.line_height = 1.35
+c.line_height = 1.25
 c.initial_cols = 200
 c.initial_rows = 40
 c.window_padding = {
