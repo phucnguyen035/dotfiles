@@ -82,6 +82,21 @@ c.keys = {
 		mods = "SUPER",
 		action = act.CloseCurrentPane({ confirm = true }),
 	},
+	{
+		key = "+",
+		mods = "SUPER",
+		action = act.IncreaseFontSize,
+	},
+	{
+		key = "-",
+		mods = "SUPER",
+		action = act.DecreaseFontSize,
+	},
+	{
+		key = "0",
+		mods = "SUPER",
+		action = act.ResetFontSize,
+	},
 }
 
 return c
