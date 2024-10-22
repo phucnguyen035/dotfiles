@@ -46,9 +46,6 @@ return {
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
     },
     config = function()
-      require('lspconfig.ui.windows').default_options = {
-        border = 'single',
-      }
       -- [[ Configure LSP ]]
       --  This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(client, bufnr)
