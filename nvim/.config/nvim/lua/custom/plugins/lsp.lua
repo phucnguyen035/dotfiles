@@ -233,10 +233,13 @@ return {
             mode = 'auto',
           },
           experimental = {
-            useFlatConfig = true,
+            useFlatConfig = false,
           },
         },
         vtsls = {
+          completions = {
+            completeFunctionCalls = false,
+          },
           typescript = {
             inlayHints = {
               parameterNames = {
@@ -349,23 +352,29 @@ return {
         },
       }
 
-      -- Setup neovim lua configuration
       local root_config = {
-        tailwindcss = {
-          root_dir = function(fname)
-            local lspconfig = require 'lspconfig'
-            local root_pattern = lspconfig.util.root_pattern(
-              'tailwind.config.js',
-              'tailwind.config.cjs',
-              'tailwind.config.mjs',
-              'tailwind.config.ts',
-              'tailwind.config.mts',
-              'tailwind.config.cts'
-            )
+        tailwindcss = function(fname)
+          local extensions = { 'js', 'cjs', 'mjs', 'ts', 'cts', 'mts' }
+          local tailwind_config = vim.tbl_map(function(ext)
+            return 'tailwind.config.' .. ext
+          end, extensions)
 
-            return root_pattern(fname)
-          end,
-        },
+          return vim.fs.root(fname, tailwind_config)
+        end,
+        denols = function(fname)
+          return vim.fs.root(fname, { 'deno.json', 'deno.jsonc' })
+        end,
+        vtsls = function(fname)
+          if vim.fs.root(fname, { 'deno.json', 'deno.jsonc' }) then
+            return nil
+          end
+
+          return vim.fs.root(fname, { 'tsconfig.json', 'package.json', 'jsconfig.json' })
+        end,
+      }
+
+      local single_file_config = {
+        vtsls = false,
       }
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -395,7 +404,8 @@ return {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
-            root_dir = (root_config[server_name] or {}).root_dir,
+            root_dir = root_config[server_name],
+            single_file_support = single_file_config[server_name],
           }
         end,
       }
