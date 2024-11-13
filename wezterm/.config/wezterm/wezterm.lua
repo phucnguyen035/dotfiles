@@ -11,7 +11,7 @@ end
 
 local function get_scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
-		return "Catppuccin Mocha"
+		return "OLEDppuccin"
 	else
 		return "Catppuccin Latte"
 	end
@@ -40,10 +40,19 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 	window:set_config_overrides(overrides)
 end)
 
+local oled = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+oled.background = "#000000"
+oled.tab_bar.background = "#040404"
+oled.tab_bar.inactive_tab.bg_color = "#0f0f0f"
+oled.tab_bar.new_tab.bg_color = "#080808"
+
 local c = wezterm.config_builder()
 
 c.freetype_load_target = "Light"
 c.disable_default_key_bindings = true
+c.color_schemes = {
+	["OLEDppuccin"] = oled,
+}
 c.color_scheme = get_scheme_for_appearance(get_appearance())
 c.default_cwd = wezterm.home_dir .. "/Projects"
 c.font = wezterm.font("JetBrainsMono Nerd Font")
