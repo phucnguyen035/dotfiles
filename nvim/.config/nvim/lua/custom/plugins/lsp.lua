@@ -347,6 +347,10 @@ return {
                 fileMatch = { 'biome.json' },
                 url = 'https://biomejs.dev/schemas/1.8.3/schema.json',
               },
+              {
+                fileMatch = { 'deno.json', 'deno.jsonc' },
+                url = 'https://deno.land/x/deno/cli/schemas/config-file.v1.json',
+              },
             },
           },
         },
