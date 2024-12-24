@@ -4,6 +4,7 @@ return {
   event = 'VeryLazy',
   opts = {
     spec = {
+      { '<leader>a', group = 'avante' },
       { '<leader>q', group = 'quit' },
       { '<leader>c', group = 'code/copilot' },
       { '<leader>ct', group = 'toggle' },
