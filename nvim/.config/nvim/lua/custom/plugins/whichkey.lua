@@ -11,6 +11,7 @@ return {
       { '<leader>h', group = 'hunk', icon = ' ' },
       { '<leader>f', group = 'file' },
       { '<leader>s', group = 'search' },
+      { '<leader>S', group = 'search and replace' },
       { '<leader>g', group = 'git' },
       { '<leader>b', group = 'buffer' },
       { '<leader>x', group = 'trouble' },

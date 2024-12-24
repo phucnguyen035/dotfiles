@@ -1,6 +1,8 @@
 return {
   'nvim-pack/nvim-spectre',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+  },
   cmd = 'Spectre',
   opts = {
     mapping = {
@@ -12,6 +14,7 @@ return {
     },
   },
   keys = {
-    { '<leader>sr', '<cmd>lua require("spectre").toggle()<cr>', desc = 'Search and replace' },
+    { '<leader>Sr', '<cmd>lua require("spectre").toggle()<cr>', desc = 'Search and replace' },
+    { '<leader>Sb', '<cmd>lua require("spectre").open_file_search()<cr>', desc = 'Search and replace in current file' },
   },
 }
