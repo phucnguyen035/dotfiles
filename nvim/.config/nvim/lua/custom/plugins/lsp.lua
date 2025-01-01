@@ -357,14 +357,6 @@ return {
       }
 
       local root_config = {
-        tailwindcss = function(fname)
-          local extensions = { 'js', 'cjs', 'mjs', 'ts', 'cts', 'mts' }
-          local tailwind_config = vim.tbl_map(function(ext)
-            return 'tailwind.config.' .. ext
-          end, extensions)
-
-          return vim.fs.root(fname, tailwind_config)
-        end,
         denols = function(fname)
           return vim.fs.root(fname, { 'deno.json', 'deno.jsonc' })
         end,
