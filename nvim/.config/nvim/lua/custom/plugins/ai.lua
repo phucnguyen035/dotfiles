@@ -50,12 +50,13 @@ return {
         },
       },
     },
+    ---@module 'avante'
+    ---@type avante.Config
     opts = {
       provider = 'copilot',
-      auto_suggestions_provider = 'copilot',
-      claude = {
-        api_key_name = 'cmd:op read op://Personal/CodeCompanion/credential --no-newline',
-      },
+      -- claude = {
+      --   api_key_name = 'cmd:op read op://Personal/CodeCompanion/credential --no-newline',
+      -- },
       copilot = {
         model = 'claude-3.5-sonnet',
       },
