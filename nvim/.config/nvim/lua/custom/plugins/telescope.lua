@@ -71,7 +71,7 @@ return {
       desc = 'Command history',
     },
     {
-      '<leader>fr',
+      '<leader>/',
       '<cmd>Telescope oldfiles cwd_only=true<cr>',
       desc = 'Find recent files (cwd)',
     },
@@ -84,11 +84,6 @@ return {
       '<leader><space>',
       '<cmd>Telescope find_files<cr>',
       desc = 'Find files from project root',
-    },
-    {
-      '<leader>fg',
-      '<cmd>Telescope git_files<cr>',
-      desc = 'Find git files',
     },
     {
       '<leader>sh',

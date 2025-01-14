@@ -81,12 +81,6 @@ return {
 
         -- Lesser used LSP functionality
         nmap('gD', vim.lsp.buf.declaration, 'Goto declaration')
-        nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Get workspace symbols')
-        nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Add workspace folder')
-        nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, 'Remove workspace folder')
-        nmap('<leader>wl', function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, 'List workspace folders')
 
         if client.name == 'eslint' then
           vim.api.nvim_create_autocmd('BufWritePre', {
