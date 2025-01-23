@@ -143,14 +143,17 @@ return {
     opts = {
       max_lines = 3,
     },
-    config = function(_, opts)
-      local tc = require 'treesitter-context'
-      tc.setup(opts)
-
-      vim.keymap.set('n', '[c', function()
-        tc.go_to_context(vim.v.count1)
-      end, { silent = true, desc = 'TS: Go to context' })
-    end,
+    keys = {
+      {
+        '[c',
+        function()
+          local tc = require 'treesitter-context'
+          tc.go_to_context(vim.v.count1)
+        end,
+        silent = true,
+        desc = 'TS: Go to context',
+      },
+    },
   },
   {
     'luckasRanarison/tailwind-tools.nvim',
