@@ -18,7 +18,6 @@ return {
     event = 'VeryLazy',
     lazy = false,
     version = false,
-    build = 'make',
     dependencies = {
       'stevearc/dressing.nvim',
       'nvim-lua/plenary.nvim',
