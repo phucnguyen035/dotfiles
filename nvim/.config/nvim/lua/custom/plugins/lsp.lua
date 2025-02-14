@@ -177,10 +177,6 @@ return {
             telemetry = { enable = false },
           },
         },
-        htmx = {
-          filetypes = { 'templ' },
-        },
-        templ = {},
         html = {},
         emmet_language_server = {
           filetypes = {
@@ -344,7 +340,6 @@ return {
             },
           },
         },
-        elixirls = {},
       }
 
       local root_config = {
