@@ -203,9 +203,16 @@ return {
     {
       '<leader>bd',
       function()
-        Snacks.bufdelete()
+        Snacks.bufdelete.delete()
       end,
       desc = 'Delete Buffer',
+    },
+    {
+      '<leader>bD',
+      function()
+        Snacks.bufdelete.other()
+      end,
+      desc = 'Delete all buffers except the current one',
     },
     {
       '<leader>cR',
