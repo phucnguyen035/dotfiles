@@ -44,7 +44,6 @@ return {
           gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Reset Hunk (range)' })
         map('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage Buffer' })
-        map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo Stage Hunk' })
         map('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset Buffer' })
         map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview Hunk' })
         map('n', '<leader>hb', function()
@@ -55,7 +54,7 @@ return {
         map('n', '<leader>hD', function()
           gs.diffthis '~'
         end, { desc = 'Diff This (cached)' })
-        map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle Deleted' })
+        map('n', '<leader>td', gs.preview_hunk_inline, { desc = 'Preview hunk inline' })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select Hunk (inner)' })
