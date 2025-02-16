@@ -93,22 +93,6 @@ return {
     opts = {},
   },
   {
-    'echasnovski/mini.bufremove',
-    version = false,
-    event = 'BufRead',
-    opts = {},
-    keys = {
-      {
-
-        '<leader>bd',
-        function()
-          require('mini.bufremove').delete()
-        end,
-        desc = 'Delete buffer',
-      },
-    },
-  },
-  {
     'echasnovski/mini.cursorword',
     cond = not vim.g.vscode,
     event = 'BufRead',
@@ -150,10 +134,10 @@ return {
         ]],
         evaluate_single = true,
         items = {
-          { name = 'Find files', action = 'Telescope find_files', section = 'Telescope' },
-          { name = 'Recent files', action = "lua require('telescope.builtin').oldfiles({ cwd_only = true })", section = 'Telescope' },
-          { name = 'Grep text', action = 'Telescope live_grep', section = 'Telescope' },
-          { name = 'Harpoon marks', action = "lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())", section = 'Telescope' },
+          -- { name = 'Find files', action = 'Telescope find_files', section = 'Telescope' },
+          -- { name = 'Recent files', action = "lua require('telescope.builtin').oldfiles({ cwd_only = true })", section = 'Telescope' },
+          -- { name = 'Grep text', action = 'Telescope live_grep', section = 'Telescope' },
+          -- { name = 'Harpoon marks', action = "lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())", section = 'Telescope' },
           { name = 'Plugin', action = 'Lazy', section = 'Config' },
           { name = 'Mason', action = 'Mason', section = 'Config' },
           { name = 'Session restore', action = "lua require('persistence').load()", section = 'Session' },

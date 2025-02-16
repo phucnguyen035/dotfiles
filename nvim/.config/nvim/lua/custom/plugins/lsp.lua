@@ -2,39 +2,8 @@ if vim.g.vscode then
   return {}
 end
 
-local function filter(arr, fn)
-  if type(arr) ~= 'table' then
-    return arr
-  end
-
-  local filtered = {}
-  for k, v in pairs(arr) do
-    if fn(v, k, arr) then
-      table.insert(filtered, v)
-    end
-  end
-
-  return filtered
-end
-
-local function filterReactDTS(value)
-  return string.match(value.filename, '%.d.ts') == nil
-end
-
-local function on_list(options)
-  -- https://github.com/typescript-language-server/typescript-language-server/issues/216
-  local items = options.items
-  if #items > 1 then
-    items = filter(items, filterReactDTS)
-  end
-
-  vim.fn.setqflist({}, ' ', { title = options.title, items = items, context = options.context })
-  vim.api.nvim_command 'cfirst'
-end
-
 return {
   {
-
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -62,25 +31,10 @@ return {
         nmap('<leader>cr', vim.lsp.buf.rename, 'Rename symbol')
         nmap('<leader>ca', vim.lsp.buf.code_action, 'Code action')
         vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
-        nmap('gr', function()
-          require('telescope.builtin').lsp_references { include_declaration = false }
-        end, 'find references')
-        nmap('<leader>ss', function()
-          require('telescope.builtin').lsp_document_symbols {}
-        end, 'Search document symbols')
-
-        nmap('gd', function()
-          vim.lsp.buf.definition { on_list = on_list }
-        end, 'go to definition')
-        nmap('gI', vim.lsp.buf.implementation, 'go to implementation')
-        nmap('gt', vim.lsp.buf.type_definition, 'go to type definition')
 
         -- See `:help K` for why this keymap
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
         nmap('gs', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-        -- Lesser used LSP functionality
-        nmap('gD', vim.lsp.buf.declaration, 'Goto declaration')
 
         if client.name == 'eslint' then
           vim.api.nvim_create_autocmd('BufWritePre', {

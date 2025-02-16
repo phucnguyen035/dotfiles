@@ -17,18 +17,12 @@ return {
           lsp_trouble = true,
           treesitter = true,
           gitsigns = true,
-          telescope = true,
           cmp = true,
           which_key = true,
           ufo = true,
           neogit = true,
           notify = true,
           noice = true,
-          indent_blankline = {
-            enabled = true,
-            scope_color = 'lavender',
-            colored_indent_levels = false,
-          },
         },
         color_overrides = {
           mocha = {
@@ -41,12 +35,6 @@ return {
 
       vim.cmd.colorscheme 'catppuccin'
     end,
-  },
-  {
-    'stevearc/dressing.nvim',
-    cond = not vim.g.vscode,
-    event = 'VeryLazy',
-    opts = {},
   },
   {
     'nmac427/guess-indent.nvim',
