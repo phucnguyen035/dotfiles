@@ -30,12 +30,6 @@ vim.o.termguicolors = true
 -- Set default split
 vim.o.sb = true
 vim.o.spr = true
--- Fold
-vim.o.foldcolumn = '0' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.foldmethod = 'syntax'
 if not vim.g.vscode then
   vim.o.so = 999
 end
