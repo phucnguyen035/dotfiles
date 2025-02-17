@@ -66,6 +66,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',
+      'ibhagwan/fzf-lua',
     },
     cmd = 'Neogit',
     keys = {
@@ -83,7 +84,6 @@ return {
     opts = {
       console_timeout = 5000,
       integrations = {
-        telescope = true,
         diffview = true,
       },
     },
