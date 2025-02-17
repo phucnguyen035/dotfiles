@@ -9,6 +9,7 @@ return {
         fps = 120,
       },
     },
+    input = {},
     image = {},
     scroll = {
       animate = {
@@ -24,6 +25,13 @@ return {
       },
     },
     statuscolumn = {},
+    styles = {
+      input = {
+        relative = 'cursor',
+        row = -3,
+        col = 0,
+      },
+    },
   },
   keys = {
     {
