@@ -10,6 +10,20 @@ return {
       },
     },
     image = {},
+    scroll = {
+      animate = {
+        duration = { step = 15, total = 250 },
+        easing = 'linear',
+        fps = 120,
+      },
+      -- faster animation when repeating scroll after delay
+      animate_repeat = {
+        delay = 100,
+        duration = { step = 5, total = 50 },
+        easing = 'linear',
+      },
+    },
+    statuscolumn = {},
   },
   keys = {
     {
