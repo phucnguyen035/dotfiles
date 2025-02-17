@@ -25,6 +25,7 @@ return {
       'hrsh7th/nvim-cmp',
       'nvim-tree/nvim-web-devicons',
       'zbirenbaum/copilot.lua',
+      'ibhagwan/fzf-lua',
       {
         -- support for image pasting
         'HakonHarnes/img-clip.nvim',
