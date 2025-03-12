@@ -7,7 +7,7 @@ return {
     priority = 1000,
     init = function()
       require('catppuccin').setup {
-        -- transparent_background = true,
+        no_italic = true,
         background = {
           light = 'latte',
           dark = 'mocha',
@@ -23,6 +23,9 @@ return {
           neogit = true,
           notify = true,
           noice = true,
+          snacks = {
+            enabled = true,
+          },
         },
         color_overrides = {
           mocha = {
