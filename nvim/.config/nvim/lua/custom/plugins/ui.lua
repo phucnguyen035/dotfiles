@@ -27,13 +27,6 @@ return {
             enabled = true,
           },
         },
-        color_overrides = {
-          mocha = {
-            base = '#000000',
-            mantle = '#010101',
-            crust = '#020202',
-          },
-        },
       }
 
       vim.cmd.colorscheme 'catppuccin'
