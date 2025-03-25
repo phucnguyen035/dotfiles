@@ -1,30 +1,16 @@
 return {
   {
-    'zbirenbaum/copilot.lua',
-    cond = not vim.g.vscode,
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    opts = {
-      suggestion = {
-        auto_trigger = true,
-      },
-      filetypes = {
-        yaml = true,
-      },
-    },
-  },
-  {
     'yetone/avante.nvim',
     event = 'VeryLazy',
-    lazy = false,
     version = false,
+    build = 'make',
     dependencies = {
+      'nvim-treesitter/nvim-treesitter',
       'stevearc/dressing.nvim',
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       'hrsh7th/nvim-cmp',
       'nvim-tree/nvim-web-devicons',
-      'zbirenbaum/copilot.lua',
       'ibhagwan/fzf-lua',
       {
         -- support for image pasting
@@ -52,12 +38,11 @@ return {
     ---@module 'avante'
     ---@type avante.Config
     opts = {
-      provider = 'copilot',
       -- claude = {
       --   api_key_name = 'cmd:op read op://Personal/CodeCompanion/credential --no-newline',
       -- },
-      copilot = {
-        model = 'claude-3.5-sonnet',
+      behaviour = {
+        enable_claude_text_editor_tool_mode = true,
       },
     },
   },
