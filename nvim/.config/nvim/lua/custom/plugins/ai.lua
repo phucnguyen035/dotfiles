@@ -6,7 +6,7 @@ return {
     build = 'make',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
-      'stevearc/dressing.nvim',
+      'folke/snacks.nvim',
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       'hrsh7th/nvim-cmp',
@@ -41,6 +41,9 @@ return {
       -- claude = {
       --   api_key_name = 'cmd:op read op://Personal/CodeCompanion/credential --no-newline',
       -- },
+      file_selector = {
+        provider = 'snacks',
+      },
       behaviour = {
         enable_claude_text_editor_tool_mode = true,
       },
