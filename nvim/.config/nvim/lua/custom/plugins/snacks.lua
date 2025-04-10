@@ -49,6 +49,14 @@ return {
       end,
       desc = 'Command History',
     },
+    -- find
+    {
+      '<leader>fp',
+      function()
+        Snacks.picker.projects()
+      end,
+      desc = 'Projects',
+    },
     -- git
     {
       '<leader>gb',
