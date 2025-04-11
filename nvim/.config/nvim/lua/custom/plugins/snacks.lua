@@ -19,6 +19,9 @@ return {
         col = 0,
       },
     },
+    picker = {
+      ui_select = true,
+    },
   },
   keys = {
     {
