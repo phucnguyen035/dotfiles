@@ -86,10 +86,12 @@ return {
       --  define the property 'filetypes' to the map in question.
       local servers = {
         -- clangd = {},
+        golangci_lint_ls = {
+          filetypes = { 'go', 'gomod' },
+        },
         gopls = {
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'gohtmltmpl', 'gotexttmpl' },
           gopls = {
-            gofumpt = true,
             codelenses = {
               gc_details = false,
               generate = true,
