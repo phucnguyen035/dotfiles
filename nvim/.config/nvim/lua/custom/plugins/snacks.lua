@@ -27,7 +27,9 @@ return {
     {
       '<leader><space>',
       function()
-        require('snacks').picker.smart()
+        require('snacks').picker.smart {
+          multi = { 'buffers', 'files' },
+        }
       end,
       desc = 'Smart Find Files',
     },
@@ -56,7 +58,9 @@ return {
     {
       '<leader>fp',
       function()
-        Snacks.picker.projects()
+        Snacks.picker.projects {
+          projects = { '~/Projects' },
+        }
       end,
       desc = 'Projects',
     },
