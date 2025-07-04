@@ -234,23 +234,6 @@ return {
         },
       }
 
-      local root_config = {
-        denols = function(fname)
-          return vim.fs.root(fname, { 'deno.json', 'deno.jsonc' })
-        end,
-        vtsls = function(fname)
-          if vim.fs.root(fname, { 'deno.json', 'deno.jsonc' }) then
-            return nil
-          end
-
-          return vim.fs.root(fname, { 'tsconfig.json', 'package.json', 'jsconfig.json' })
-        end,
-      }
-
-      local single_file_config = {
-        vtsls = false,
-      }
-
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.workspace.didChangeWatchedFiles = {
