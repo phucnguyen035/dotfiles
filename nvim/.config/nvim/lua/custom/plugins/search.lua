@@ -1,10 +1,17 @@
 return {
   'nvim-pack/nvim-spectre',
+  build = 'build.sh nvim-oxi',
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
   cmd = 'Spectre',
   opts = {
+    use_trouble_qf = true,
+    default = {
+      replace = {
+        cmd = 'oxi',
+      },
+    },
     mapping = {
       ['enter_file'] = {
         map = 'o',
