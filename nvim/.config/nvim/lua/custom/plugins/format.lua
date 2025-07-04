@@ -58,6 +58,10 @@ return {
       local formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'golangci-lint' },
+        python = {
+          'ruff_format',
+          'ruff_organize_imports',
+        },
       }
 
       local frontend = {
