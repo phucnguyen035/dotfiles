@@ -9,76 +9,14 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true, cmd = 'Mason' },
-      'williamboman/mason-lspconfig.nvim',
+      { 'mason-org/mason.nvim', opts = {}, cmd = 'Mason' },
+      'mason-org/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
       -- [[ Configure LSP ]]
-      --  This function gets run when an LSP connects to a particular buffer.
-      local on_attach = function(client, bufnr)
-        -- In this case, we create a function that lets us more easily define mappings specific
-        -- for LSP related items. It sets the mode, buffer and description for us each time.
-        local nmap = function(keys, func, desc)
-          if desc then
-            desc = 'LSP: ' .. desc
-          end
-
-          vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc, noremap = true, silent = true })
-        end
-
-        nmap('<leader>cr', vim.lsp.buf.rename, 'Rename symbol')
-        nmap('<leader>ca', vim.lsp.buf.code_action, 'Code action')
-        vim.keymap.set('v', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = '[C]ode [A]ction' })
-
-        -- See `:help K` for why this keymap
-        nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-        nmap('gs', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-        if client.name == 'eslint' then
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            buffer = bufnr,
-            callback = function(event)
-              local diag = vim.diagnostic.count(event.buf, { severity = vim.diagnostic.severity.ERROR })
-              local has_errors = next(diag) ~= nil
-              if has_errors then
-                vim.cmd 'EslintFixAll'
-              end
-            end,
-          })
-        end
-
-        -- Big hack for svelte https://www.reddit.com/r/neovim/comments/1598ewp/neovim_svelte/
-        if client.name == 'svelte' then
-          vim.api.nvim_create_autocmd('BufWritePost', {
-            pattern = { '*.js', '*.ts' },
-            callback = function(ctx)
-              client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
-            end,
-          })
-        end
-
-        if client.name == 'ruff' then
-          -- Disable hover in favor of Pyright
-          client.server_capabilities.hoverProvider = false
-        end
-
-        if client.name == 'tailwindcss' then
-          require('tailwind-tools').setup {}
-        end
-
-        if client.supports_method 'textDocument/codeLens' then
-          vim.lsp.codelens.refresh { bufnr = 0 }
-          vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave' }, {
-            pattern = '<buffer>',
-            callback = function()
-              vim.lsp.codelens.refresh { bufnr = 0 }
-            end,
-          })
-        end
-      end
-
       --  Add any additional override configuration in the following tables. They will be passed to
       --  the `settings` field of the server config. You must look up that documentation yourself.
       --
@@ -158,7 +96,6 @@ return {
         biome = {},
         astro = {},
         svelte = {},
-        volar = {},
         tailwindcss = {
           tailwindCSS = {
             experimental = {
@@ -225,8 +162,7 @@ return {
           },
           python = {
             analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = 'openFilesOnly',
+              typeCheckingMode = 'standard',
             },
           },
         },
@@ -328,44 +264,106 @@ return {
         lineFoldingOnly = true,
       }
 
-      -- Ensure the servers above are installed
-      local mason_lspconfig = require 'mason-lspconfig'
+      local ensure_installed = vim.tbl_keys(servers or {})
 
-      mason_lspconfig.setup {
-        ensure_installed = vim.tbl_keys(servers),
+      require('mason-tool-installer').setup { ensure_installed }
+
+      require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = false,
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
       }
 
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-            root_dir = root_config[server_name],
-            single_file_support = single_file_config[server_name],
-          }
-        end,
-      }
+      -- mason_lspconfig.setup_handlers {
+      --   function(server_name)
+      --     require('lspconfig')[server_name].setup {
+      --       capabilities = capabilities,
+      --       on_attach = on_attach,
+      --       settings = servers[server_name],
+      --       filetypes = (servers[server_name] or {}).filetypes,
+      --       root_dir = root_config[server_name],
+      --       single_file_support = single_file_config[server_name],
+      --     }
+      --   end,
+      -- }
 
       -- Whenever an LSP attaches to a buffer, we will run this function.
       -- See `:help LspAttach` for more information about this autocmd event.
       vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-          local client_id = args.data.client_id
+        callback = function(event)
+          -- KEYMAPS
+          local map = function(keys, func, desc, mode)
+            mode = mode or 'n'
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          end
+          map('<leader>cr', vim.lsp.buf.rename, 'Rename symbol')
+          map('<leader>ca', vim.lsp.buf.code_action, 'Code action', 'v')
+
+          -- See `:help K` for why this keymap
+          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('gs', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+          local client_id = event.data.client_id
           local client = vim.lsp.get_client_by_id(client_id)
           if not client then
             return
           end
 
-          if client.supports_method 'textDocument/inlayHint' then
-            vim.keymap.set('n', '<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { buffer = args.buffer })
-            end, { buffer = args.buffer, desc = 'Toggle inlay hints' })
+          if client.name == 'eslint' then
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = event.buf,
+              callback = function(event)
+                local diag = vim.diagnostic.count(event.buf, { severity = vim.diagnostic.severity.ERROR })
+                local has_errors = next(diag) ~= nil
+                if has_errors then
+                  vim.cmd 'EslintFixAll'
+                end
+              end,
+            })
           end
 
+          if client.name == 'ruff' then
+            -- Disable hover in favor of Pyright
+            client.server_capabilities.hoverProvider = false
+          end
+
+          if client.name == 'tailwindcss' then
+            require('tailwind-tools').setup {}
+          end
+
+          if client.name == 'svelte' then
+            vim.api.nvim_create_autocmd('BufWritePost', {
+              pattern = { '*.js', '*.ts' },
+              callback = function(ctx)
+                client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
+              end,
+            })
+          end
+
+          if client.supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
+          end
+
+          -- if client.supports_method 'textDocument/codeLens' then
+          --   vim.lsp.codelens.refresh { bufnr = 0 }
+          --   vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave' }, {
+          --     pattern = '<buffer>',
+          --     callback = function()
+          --       vim.lsp.codelens.refresh { bufnr = 0 }
+          --     end,
+          --   })
+          -- end
+
           -- Only attach to clients that support document formatting
-          if not client.supports_method 'textDocument/formatting' then
+          if not client.supports_method(client, 'textDocument/formatting') then
             return
           end
 
@@ -379,7 +377,7 @@ return {
                   diagnostics = {},
                 },
               }
-            end, { buffer = args.buffer, desc = 'Remove unused' })
+            end, { buffer = event.buf, desc = 'Remove unused' })
           end
 
           -- Big hack for svelte https://www.reddit.com/r/neovim/comments/1598ewp/neovim_svelte/
