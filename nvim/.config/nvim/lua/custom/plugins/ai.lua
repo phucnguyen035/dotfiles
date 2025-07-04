@@ -1,51 +1,25 @@
 return {
   {
-    'yetone/avante.nvim',
-    event = 'VeryLazy',
-    version = false,
-    build = 'make',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'folke/snacks.nvim',
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      'hrsh7th/nvim-cmp',
-      'nvim-tree/nvim-web-devicons',
-      'ibhagwan/fzf-lua',
+    'coder/claudecode.nvim',
+    dependencies = { 'folke/snacks.nvim' },
+    config = true,
+    keys = {
+      { '<leader>a', nil, desc = 'AI/Claude Code' },
+      { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },
+      { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
+      { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = 'Resume Claude' },
+      { '<leader>aC', '<cmd>ClaudeCode --continue<cr>', desc = 'Continue Claude' },
+      { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
+      { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
       {
-        -- support for image pasting
-        'HakonHarnes/img-clip.nvim',
-        event = 'VeryLazy',
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-          },
-        },
-      },
-      {
-        'MeanderingProgrammer/render-markdown.nvim',
-        ft = { 'markdown', 'Avante' },
-        opts = {
-          file_types = { 'markdown', 'Avante' },
-        },
-      },
-    },
-    ---@module 'avante'
-    ---@type avante.Config
-    opts = {
-      -- claude = {
-      --   api_key_name = 'cmd:op read op://Personal/CodeCompanion/credential --no-newline',
-      -- },
-      file_selector = {
-        provider = 'snacks',
-      },
-      behaviour = {
-        enable_claude_text_editor_tool_mode = true,
+        '<leader>as',
+        '<cmd>ClaudeCodeTreeAdd<cr>',
+        desc = 'Add file',
+        ft = { 'NvimTree', 'neo-tree', 'oil' },
+
+        -- Diff management
+        { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff' },
+        { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
       },
     },
   },
