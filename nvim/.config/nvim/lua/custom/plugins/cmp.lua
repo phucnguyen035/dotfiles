@@ -75,16 +75,19 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-q>'] = cmp.mapping.close(),
           ['<C-Space>'] = cmp.mapping.complete {},
-          ['<CR>'] = cmp.mapping {
-            i = function(fallback)
-              if cmp.visible() and cmp.get_active_entry() then
-                cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+          ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              if luasnip.expandable() then
+                luasnip.expand()
               else
-                fallback()
+                cmp.confirm {
+                  select = true,
+                }
               end
-            end,
-            s = cmp.mapping.confirm { select = true },
-          },
+            else
+              fallback()
+            end
+          end),
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
