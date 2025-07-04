@@ -96,15 +96,6 @@ return {
         biome = {},
         astro = {},
         svelte = {},
-        tailwindcss = {
-          tailwindCSS = {
-            experimental = {
-              classRegex = {
-                { 'tv\\((([^()]*|\\([^()]*\\))*)\\)', '["\'`]([^"\'`]*).*?["\'`]' },
-              },
-            },
-          },
-        },
         eslint = {
           format = false,
           codeActionOnSave = {
@@ -316,10 +307,6 @@ return {
             client.server_capabilities.hoverProvider = false
           end
 
-          if client.name == 'tailwindcss' then
-            require('tailwind-tools').setup {}
-          end
-
           if client.name == 'svelte' then
             vim.api.nvim_create_autocmd('BufWritePost', {
               pattern = { '*.js', '*.ts' },
@@ -390,5 +377,25 @@ return {
     },
     ft = { 'go', 'gomod', 'gohtmltmpl' },
     build = ':lua require("go.install").update_all_sync()',
+  },
+  {
+    'luckasRanarison/tailwind-tools.nvim',
+    name = 'tailwind-tools',
+    build = ':UpdateRemotePlugins',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'neovim/nvim-lspconfig',
+    },
+    opts = {
+      server = {
+        settings = {
+          experimental = {
+            classRegex = {
+              { 'tv\\((([^()]*|\\([^()]*\\))*)\\)', '["\'`]([^"\'`]*).*?["\'`]' },
+            },
+          },
+        },
+      },
+    },
   },
 }

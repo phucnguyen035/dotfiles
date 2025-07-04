@@ -1,10 +1,3 @@
-local function has_tailwind_lsp()
-  local clients = vim.lsp.get_clients { name = 'tailwindcss' }
-  local results = #clients > 0
-
-  return results
-end
-
 return {
   {
     'L3MON4D3/LuaSnip',
@@ -110,13 +103,7 @@ return {
 
         formatting = {
           format = lspkind.cmp_format {
-            before = function(entry, item)
-              if has_tailwind_lsp() then
-                require('tailwind-tools.cmp').lspkind_format(entry, item)
-              end
-
-              return item
-            end,
+            before = require('tailwind-tools.cmp').lspkind_format,
           },
         },
 

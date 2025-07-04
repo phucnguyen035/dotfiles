@@ -147,17 +147,6 @@ return {
     },
   },
   {
-    'luckasRanarison/tailwind-tools.nvim',
-    lazy = true,
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    opts = {
-      conceal = {
-        enabled = true,
-        min_length = 50,
-      },
-    },
-  },
-  {
     'windwp/nvim-ts-autotag',
     lazy = true,
     opts = {},
