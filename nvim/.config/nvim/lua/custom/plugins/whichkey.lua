@@ -3,6 +3,7 @@ return {
   cond = not vim.g.vscode,
   event = 'VeryLazy',
   opts = {
+    preset = 'helix',
     spec = {
       { '<leader>q', group = 'quit' },
       { '<leader>c', group = 'code' },
@@ -25,6 +26,15 @@ return {
       { '<leader><tab>n', '<cmd>tabnew<cr>', desc = 'New tab' },
       { '<leader><tab>d', '<cmd>tabclose<cr>', desc = 'Remove tab' },
       { '<leader><tab>o', '<cmd>tabonly<cr>', desc = 'Close other tabs' },
+    },
+  },
+  keys = {
+    {
+      '<leader>?',
+      function()
+        require('which-key').show { global = false }
+      end,
+      desc = 'Buffer Local Keymaps (which-key)',
     },
   },
 }
