@@ -3,10 +3,11 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 
 -- Disable LazyVim default keymaps
-vim.keymap.del("n", "<leader>wd")
-vim.keymap.del("n", "<leader>wm")
+unmap("n", "<leader>wd")
+unmap("n", "<leader>wm")
 
 map("i", "jk", "<ESC>", { desc = "Exit insert mode", nowait = true })
 map("i", "<C-h>", "<Left>", { desc = "Move left" })
@@ -26,6 +27,7 @@ map("x", "zV", "zMzO", { desc = "Close all except current cursor line", silent =
 map("n", "<leader>qq", "<cmd>qall<cr>", { desc = "Quit all" })
 map("n", "<leader>r", "<cmd>e<cr>", { desc = "Reload file" })
 map("n", "<leader>R", "<cmd>e!<cr>", { desc = "Reload file (force)", silent = true, nowait = true })
+map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 
 -- Smart splits
 local splits = require("smart-splits")
