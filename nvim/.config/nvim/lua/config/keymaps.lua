@@ -1,7 +1,5 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 local map = vim.keymap.set
 local unmap = vim.keymap.del
 
@@ -9,6 +7,7 @@ local unmap = vim.keymap.del
 unmap("n", "<leader>wd")
 unmap("n", "<leader>wm")
 
+-- Additional keymaps here
 map("i", "jk", "<ESC>", { desc = "Exit insert mode", nowait = true })
 map("i", "<C-h>", "<Left>", { desc = "Move left" })
 map("i", "<C-l>", "<Right>", { desc = "Move right" })
