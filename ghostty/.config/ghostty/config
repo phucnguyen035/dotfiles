@@ -1,8 +1,6 @@
 theme = catppuccin-mocha
 shell-integration = fish
 font-size = 15
-background-opacity = 0.85
-background-blur = true
 command = /bin/zsh -c ~/.config/ghostty/start.sh
 
 macos-option-as-alt = true
