@@ -1,8 +1,8 @@
-theme = catppuccin-mocha
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 shell-integration = fish
 font-size = 15
 command = /bin/zsh -c ~/.config/ghostty/start.sh
 
 macos-option-as-alt = true
 macos-titlebar-style = tabs
-macos-icon = blueprint
+macos-icon = official
