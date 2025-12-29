@@ -1,8 +1,18 @@
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 shell-integration = fish
-font-size = 15
-command = /bin/zsh -c ~/.config/ghostty/start.sh
 
+font-size = 15
+font-family = MonoLisa
+font-feature = "+ss07, +ss08, +ss15, +ss16, +zero, -liga"
+font-variation = wght=400
+font-thicken = true
+font-thicken-strength = 0
+
+font-family-italic = MonoLisa
+font-variation-italic = wght=400
+
+
+adjust-cell-height = 5
 macos-option-as-alt = true
 macos-titlebar-style = tabs
 macos-icon = official
