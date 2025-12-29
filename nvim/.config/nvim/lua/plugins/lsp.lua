@@ -8,6 +8,13 @@ return {
           opts.settings.typescript.inlayHints.functionLikeReturnTypes.enabled = false
         end,
       },
+      servers = {
+        ["*"] = {
+          keys = {
+            { "<C-k>", false, mode = "i" },
+          },
+        },
+      },
     },
   },
 }
