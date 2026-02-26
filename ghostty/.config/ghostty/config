@@ -1,18 +1,18 @@
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 shell-integration = fish
+window-padding-x = 8
 
-font-size = 15
+font-size = 16
 font-family = MonoLisa
-font-feature = "+ss07, +ss08, +ss15, +ss16, +zero, -liga"
-font-variation = wght=400
+font-feature = "+ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga"
+font-variation = wght=300
 font-thicken = true
-font-thicken-strength = 0
+
 
 font-family-italic = MonoLisa
 font-variation-italic = wght=400
 
-
-adjust-cell-height = 5
+adjust-cell-height = 10%
 macos-option-as-alt = true
 macos-titlebar-style = tabs
 macos-icon = official
