@@ -1,0 +1,44 @@
+{
+  "version": 3,
+  "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "skillFolderHash": "928950704df8a8b885c03de5da626331e6f29cf8",
+      "installedAt": "2026-02-26T16:23:56.722Z",
+      "updatedAt": "2026-02-26T16:23:56.722Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-02-26T16:24:03.936Z",
+      "updatedAt": "2026-02-26T16:24:03.936Z"
+    },
+    "git-commit": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/github/awesome-copilot.git",
+      "skillPath": "skills/git-commit/SKILL.md",
+      "skillFolderHash": "883a6a7466f55a9cd9f22cf1cce2d9333fc9b998",
+      "installedAt": "2026-02-26T16:25:51.674Z",
+      "updatedAt": "2026-02-26T16:25:51.674Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode"
+  ]
+}
