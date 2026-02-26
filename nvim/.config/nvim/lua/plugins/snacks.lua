@@ -10,5 +10,11 @@ return {
         fps = 120,
       },
     },
+    -- picker = {
+    --   sources = {
+    --     files = { hidden = true },
+    --     explorer = { hidden = true },
+    --   },
+    -- },
   },
 }
