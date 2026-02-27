@@ -159,47 +159,39 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
+        // bind "Alt h" { MoveFocusOrTab "left"; }
+        // bind "Alt i" { MoveTab "left"; }
+        // bind "Alt j" { MoveFocus "down"; }
+        // bind "Alt k" { MoveFocus "up"; }
+        // bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
 
-        // vim nagivation
+        // vim navigation
         bind "Ctrl h" {
             MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab";
                 payload "left";
-
-                move_mod "ctrl";
             };
         }
         bind "Ctrl j" {
             MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
                 name "move_focus";
                 payload "down";
-
-                move_mod "ctrl";
             };
         }
         bind "Ctrl k" {
             MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
                 name "move_focus";
                 payload "up";
-
-                move_mod "ctrl";
             };
         }
         bind "Ctrl l" {
             MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab";
                 payload "right";
-
-                move_mod "ctrl";
             };
         }
         bind "Alt h" {
