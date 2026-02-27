@@ -10,11 +10,21 @@ return {
         fps = 120,
       },
     },
-    -- picker = {
-    --   sources = {
-    --     files = { hidden = true },
-    --     explorer = { hidden = true },
-    --   },
-    -- },
+    picker = {
+      win = {
+        input = {
+          keys = {
+            ["<a-i>"] = false,
+            ["<a-I>"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["<a-h>"] = false,
+            ["<a-H>"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<m-p>"] = false,
+            ["<a-/>"] = { "toggle_preview", mode = { "i", "n" } },
+            ["<c-g>"] = false,
+            ["<a-g>"] = { "toggle_live", mode = { "i", "n" } },
+          },
+        },
+      },
+    },
   },
 }
