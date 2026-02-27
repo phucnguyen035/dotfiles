@@ -1,18 +1,24 @@
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+command = /opt/homebrew/bin/fish -l -c "zellij -l welcome"
 shell-integration = fish
-window-padding-x = 8
-custom-shader = shaders/cursor_smear.glsl
-
-font-size = 16
-font-family = MonoLisa
-font-feature = "+ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga"
-font-variation = wght=300
-font-thicken = true
-font-family-italic = MonoLisa
-font-variation-italic = wght=400
-
+shell-integration-features = true
 adjust-cell-height = 10%
+window-padding-x = 10
+font-family = MonoLisa
+font-size = 16
+font-thicken = true
+font-feature = +ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga
+font-variation = wght=400
+font-variation-bold = wght=700
+font-variation-italic = wght=300
+
+window-height = 50
+window-width = 200
+
 macos-option-as-alt = true
 macos-titlebar-style = tabs
-macos-icon = official
 
+keybind = shift+enter=text:\x1b\r
+# conflict with zellij
+keybind = alt+left=unbind
+keybind = alt+right=unbind
