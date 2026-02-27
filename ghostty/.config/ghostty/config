@@ -4,16 +4,18 @@ shell-integration = fish
 shell-integration-features = true
 adjust-cell-height = 10%
 window-padding-x = 10
+window-height = 50
+window-width = 200
+
 font-family = MonoLisa
 font-size = 16
 font-thicken = true
 font-feature = +ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga
-font-variation = wght=400
+font-variation = wght=300
 font-variation-bold = wght=700
 font-variation-italic = wght=300
 
-window-height = 50
-window-width = 200
+custom-shader = ./shaders/cursor_smear.glsl
 
 macos-option-as-alt = true
 macos-titlebar-style = tabs
