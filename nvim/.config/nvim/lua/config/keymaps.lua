@@ -27,16 +27,3 @@ map("n", "<leader>qq", "<cmd>qall<cr>", { desc = "Quit all" })
 map("n", "<leader>r", "<cmd>e<cr>", { desc = "Reload file" })
 map("n", "<leader>R", "<cmd>e!<cr>", { desc = "Reload file (force)", silent = true, nowait = true })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
-
--- Smart splits
-local splits = require("smart-splits")
-
-map("n", "<C-h>", splits.move_cursor_left)
-map("n", "<C-j>", splits.move_cursor_down)
-map("n", "<C-k>", splits.move_cursor_up)
-map("n", "<C-l>", splits.move_cursor_right)
-map("n", "<C-\\>", splits.move_cursor_previous)
-map("n", "<A-h>", splits.resize_left)
-map("n", "<A-j>", splits.resize_down)
-map("n", "<A-k>", splits.resize_up)
-map("n", "<A-l>", splits.resize_right)
