@@ -159,65 +159,15 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        // bind "Alt h" { MoveFocusOrTab "left"; }
-        // bind "Alt j" { MoveFocus "down"; }
-        // bind "Alt k" { MoveFocus "up"; }
-        // bind "Alt l" { MoveFocusOrTab "right"; }
+        bind "Alt h" { MoveFocusOrTab "left"; }
+        bind "Alt j" { MoveFocus "down"; }
+        bind "Alt k" { MoveFocus "up"; }
+        bind "Alt l" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
-
-        // vim navigation
-        bind "Ctrl h" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab";
-                payload "left";
-            };
-        }
-        bind "Ctrl j" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "move_focus";
-                payload "down";
-            };
-        }
-        bind "Ctrl k" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "move_focus";
-                payload "up";
-            };
-        }
-        bind "Ctrl l" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab";
-                payload "right";
-            };
-        }
-        bind "Alt h" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "resize";
-                payload "left";
-            };
-        }
-        bind "Alt j" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "resize";
-                payload "down";
-            };
-        }
-        bind "Alt k" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "resize";
-                payload "up";
-            };
-        }
-        bind "Alt l" {
-            MessagePlugin "file:$HOME/.config/zellij/vim-zellij-navigator.wasm" {
-                name "resize";
-                payload "right";
-            };
-        }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
