@@ -1,19 +1,33 @@
 return {
   "nvim-lualine/lualine.nvim",
-  opts = {
-    options = {
-      section_separators = { left = "", right = "" },
-    },
-    sections = {
-      lualine_a = {
-        {
-          "mode",
-          fmt = function(str)
-            return str:sub(1, 1)
-          end,
-        },
+  opts = function(_, opts)
+    opts.options.disabled_filetypes.winbar = { "snacks_dashboard", "lazy", "alpha" }
+
+    local navic = table.remove(opts.sections.lualine_c)
+
+    -- add it to the winbar instead
+    opts.winbar = {
+      lualine_b = {
+        { "filename", path = 1, file_status = false },
       },
-      lualine_z = {},
-    },
-  },
+      lualine_c = { navic },
+    }
+
+    opts.sections.lualine_a = {
+      {
+        "mode",
+        fmt = function(str)
+          return str:sub(1, 1)
+        end,
+      },
+    }
+
+    local diff = table.remove(opts.sections.lualine_x)
+
+    opts.sections.lualine_c = {
+      diff,
+    }
+
+    return opts
+  end,
 }
