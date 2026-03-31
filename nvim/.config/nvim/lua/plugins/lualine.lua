@@ -1,7 +1,12 @@
 return {
   "nvim-lualine/lualine.nvim",
   opts = function(_, opts)
-    opts.options.disabled_filetypes.winbar = { "snacks_dashboard", "lazy", "alpha" }
+    opts.options.disabled_filetypes.winbar = {
+      "snacks_dashboard",
+      "lazy",
+      "alpha",
+      "sidekick_terminal",
+    }
 
     local navic = table.remove(opts.sections.lualine_c)
 
