@@ -1,0 +1,230 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": "terminal_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "GitPanel && !CommitEditor",
+    "bindings": {
+      "q": "git_panel::Close",
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-x m": "agent::ToggleModelSelector",
+      "ctrl-x tab": "agent::ToggleProfileSelector",
+    },
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "q": "project_panel::ToggleFocus",
+      "space e": "project_panel::ToggleFocus",
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+      "o": "project_panel::Open",
+      "-": "project_panel::SelectParent",
+      "%": "project_panel::OpenSplitVertical",
+      "_": "project_panel::OpenSplitHorizontal",
+    },
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space f n": "workspace::NewFile",
+      "space f p": "projects::OpenRecent",
+      "space s g": "workspace::NewSearch",
+      "space g w t": "git::Worktree",
+      "space q q": "zed::Quit",
+      "space g g": ["task::Spawn", { "task_name": "start lazygit", "reveal_target": "center" }],
+    },
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // General
+      "space e": "pane::RevealInProjectPanel",
+      "space space": "file_finder::Toggle",
+      "space q q": "zed::Quit",
+      "space t": "terminal_panel::ToggleFocus",
+      "space w": "workspace::Save",
+      "g r": "editor::FindAllReferences",
+      "shift-h": "vim::GoToPreviousTab",
+      "shift-l": "vim::GoToTab",
+      // AI
+      "space a a": "agent::ToggleFocus",
+      "ctrl-\\": "workspace::ToggleRightDock",
+      "cmd-k": "workspace::ToggleRightDock",
+      "space a e": "assistant::InlineAssist",
+      "cmd-l": "assistant::InlineAssist",
+      // Git
+      "space g G": "git_panel::ToggleFocus",
+      "space g g": ["task::Spawn", { "task_name": "start lazygit", "reveal_target": "center" }],
+      "space g f": [
+        "task::Spawn",
+        { "task_name": "start lazygit file log", "reveal_target": "center" },
+      ],
+      "space g s": "git::StageFile",
+      "space g u": "git::UnstageFile",
+      "space g b ": "git::CheckoutBranch",
+      "space g h s": "git::StageAndNext",
+      "space g h u": "git::UnstageAndNext",
+      "space g h D": "git::Diff",
+      "space g h r": "git::Restore",
+      "space g h R": "git::RestoreFile",
+      "space g w t": "git::Worktree",
+      // UI
+      "space u i": "editor::ToggleInlayHints",
+      "space u w": "editor::ToggleSoftWrap",
+      // Open markdown preview
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+      // Files + find
+      "space f p": "projects::OpenRecent",
+      "space f f": "file_finder::Toggle",
+      "space f b": "tab_switcher::Toggle",
+      "space f B": "tab_switcher::ToggleAll",
+      // Search
+      "space s w": "buffer_search::Deploy",
+      "space s W": "pane::DeploySearch",
+      "space s d": "diagnostics::Deploy",
+      "space s s": "outline::Toggle",
+      "space s b": "vim::Search",
+      // rebind global search
+      "space /": "pane::DeploySearch",
+      "g /": null,
+      // Code
+      "space c f": "editor::Format",
+      "space c r ": "editor::Rename",
+      "space c a": "editor::ToggleCodeActions",
+      // Buffer
+      "space ,": "tab_switcher::Toggle",
+      "space b d": "pane::CloseActiveItem",
+      "space b n": "workspace::NewFile",
+      "space b q l": "pane::CloseItemsToTheRight",
+      "space b q h": "pane::CloseItemsToTheLeft",
+      "space b q q": "pane::CloseOtherItems",
+      "space b b": "pane::AlternateFile",
+      "space b p": "pane::TogglePinTab",
+      "space b o": "pane::CloseOtherItems",
+      // Diagnostics
+      "space x x": "diagnostics::Deploy",
+      "space x X": "diagnostics::DeployCurrentFile",
+      // Jump to hunks
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "] c": "editor::GoToHunk",
+      "[ c": "editor::GoToPreviousHunk",
+      // Jump to diagnostic
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] e": "editor::GoToDiagnostic",
+      "[ e": "editor::GoToPreviousDiagnostic",
+      // Excerpts
+      "] q": "editor::MoveToStartOfNextExcerpt",
+      "[ q": "editor::MoveToStartOfExcerpt",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      // Line's Motions
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+    },
+  },
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g s a": "vim::PushAddSurrounds",
+    },
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+      "ctrl-h": "editor::MoveLeft",
+      "ctrl-j": "editor::MoveDown",
+      "ctrl-k": "editor::MoveUp",
+      "ctrl-l": "editor::MoveRight",
+    },
+  },
+  {
+    "context": "vim_operator == d",
+    "bindings": {
+      "O": "editor::ExpandAllDiffHunks",
+      "C": "editor::CollapseAllDiffHunks",
+    },
+  },
+  {
+    "context": "MarkdownPreview",
+    "bindings": {
+      "j": "markdown::ScrollDown",
+      "k": "markdown::ScrollUp",
+      "q": "pane::CloseActiveItem",
+      "shift-h": "vim::GoToPreviousTab",
+      "shift-l": "vim::GoToTab",
+    },
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::MiniQuotes",
+      "b": "vim::MiniBrackets",
+    },
+  },
+  // Panel navigation
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Map VSCode like keybindings
+      "cmd-b": "workspace::ToggleRightDock",
+    },
+  },
+
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-r": "terminal::RenameTerminal",
+      "cmd-shift-h": "vim::GoToPreviousTab",
+      "cmd-shift-l": "vim::GoToTab",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+    },
+  },
+  // Which key, refer to https://github.com/zed-industries/zed/pull/43618
+  {
+    "context": "(VimControl && !menu) || Terminal",
+    "bindings": {
+      "space": null, // Disable the default action vim::WrappingRight
+      "ctrl-w": null, // Disable the default action of ctrl-w in vim which is delete previous word
+      "ctrl-w f": "workspace::ToggleZoom",
+    },
+  },
+]

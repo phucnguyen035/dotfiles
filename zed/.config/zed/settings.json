@@ -1,0 +1,272 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the open default settings command
+// from the command palette or from Zed application menu.
+// => 0 >= (1:1) 2+3 ...
+{
+  // Panel config
+  "project_panel": {
+    "dock": "right",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "button": false,
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "right",
+    "tree_view": true,
+  },
+  "close_panel_on_toggle": true,
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true,
+  },
+  "git": {
+    "gutter_debounce": 100,
+    "hunk_style": "unstaged_hollow",
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_diagnostics": "errors",
+  },
+  "buffer_font_family": "MonoLisa",
+  "buffer_font_size": 16.0,
+  "buffer_font_features": {
+    "liga": false,
+    "zero": true,
+    "ss04": true, // alt g
+    "ss07": true, // alt curly bracket
+    "ss08": true, // alt paren
+    "ss15": true, // i without serif
+    "ss16": true, // r without serif
+  },
+  "buffer_font_fallbacks": ["Symbols Nerd Font"],
+  "formatter": "auto",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Mocha",
+    "dark": "Catppuccin Mocha",
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+  },
+  "terminal": {
+    "font_fallbacks": ["Symbols Nerd Font"],
+    "font_features": {
+      "liga": false,
+      "zero": true,
+      "ss04": true, // alt g
+      "ss07": true, // alt curly bracket
+      "ss08": true, // alt paren
+      "ss15": true, // i without serif
+      "ss16": true, // r without serif
+    },
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
+  },
+  "format_on_save": "on",
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_other_hints": false,
+    "show_type_hints": false,
+  },
+  // Vim stuff goes here
+  "cursor_blink": false,
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "show_completions_on_input": true,
+  "show_whitespaces": "trailing",
+  "show_edit_predictions": true,
+  "snippet_sort_order": "bottom",
+  "command_aliases": {},
+  "vertical_scroll_margin": 10,
+  "preferred_line_length": 100,
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "javascript": {
+          "tsserver": {
+            "maxTsServerMemory": 16184,
+          },
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": true,
+            },
+            "parameterTypes": {
+              "enabled": true,
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true,
+            },
+            "enumMemberValues": {
+              "enabled": true,
+            },
+          },
+        },
+        "typescript": {
+          "tsserver": {
+            "maxTsServerMemory": 16184,
+          },
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all",
+              "suppressWhenArgumentMatchesName": true,
+            },
+            "parameterTypes": {
+              "enabled": true,
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true,
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true,
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true,
+            },
+            "enumMemberValues": {
+              "enabled": true,
+            },
+          },
+        },
+      },
+    },
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 300,
+  },
+  "active_pane_modifiers": {
+    // Inset border size of the active pane, in pixels.
+    "border_size": 0.5,
+  },
+  "title_bar": {
+    "show_branch_status_icon": false,
+    "show_branch_name": true,
+    "show_project_items": false,
+    "show_user_picture": false,
+    "show_user_menu": false,
+    "show_sign_in": true,
+  },
+  "agent": {
+    "dock": "left",
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex",
+      "enable_thinking": false,
+    },
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.3-codex",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-4.6",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.4-mini",
+        "enable_thinking": true,
+        "effort": "high",
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.4",
+        "enable_thinking": true,
+        "effort": "high",
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.5",
+        "enable_thinking": true,
+        "effort": "high",
+      },
+    ],
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex",
+    },
+    "model_parameters": [],
+  },
+  "agent_servers": {
+    "opencode": {
+      "favorite_config_option_values": {
+        "model": [
+          "github-copilot/gpt-5.4/high",
+          "github-copilot/gpt-5.4-mini/high",
+          "github-copilot/claude-sonnet-4.6/high",
+          "github-copilot/gpt-5.3-codex/high",
+          "github-copilot/gpt-5.5/high",
+        ],
+      },
+      "type": "registry",
+    },
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+    "pi-acp": {
+      "type": "registry",
+    },
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "disabled_globs": [
+      "**/.git",
+      "**/.svn",
+      "**/.hg",
+      "**/CVS",
+      "**/.DS_Store",
+      "**/Thumbs.db",
+      "**/.classpath",
+      "**/.settings",
+      "**/.vscode",
+      "**/.idea",
+      "**/.next",
+      "**/.husky",
+      "**/.turbo",
+      "**/.serverless",
+      "**/.storybook",
+      "**/node_modules",
+      "**/build",
+      "**/dist",
+      "**/out",
+      "**/coverage",
+    ],
+  },
+}
