@@ -70,11 +70,8 @@
       "cmd-l": "assistant::InlineAssist",
       // Git
       "space g G": "git_panel::ToggleFocus",
-      "space g g": ["task::Spawn", { "task_name": "start lazygit", "reveal_target": "center" }],
-      "space g f": [
-        "task::Spawn",
-        { "task_name": "start lazygit file log", "reveal_target": "center" },
-      ],
+      "space g g": ["task::Spawn", { "task_name": "start lazygit" }],
+      "space g f": ["task::Spawn", { "task_name": "start lazygit file log" }],
       "space g s": "git::StageFile",
       "space g u": "git::UnstageFile",
       "space g b ": "git::CheckoutBranch",
