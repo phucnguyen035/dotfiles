@@ -8,6 +8,18 @@
 // from the command palette or from Zed application menu.
 // => 0 >= (1:1) 2+3 ...
 {
+  "active_pane_modifiers": {
+    // Inset border size of the active pane, in pixels.
+    "inactive_opacity": 0.5,
+  },
+  "agent": {
+    "dock": "left",
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex",
+    },
+    "model_parameters": [],
+  },
   // Panel config
   "project_panel": {
     "dock": "right",
@@ -165,10 +177,6 @@
     "enabled": true,
     "delay_ms": 300,
   },
-  "active_pane_modifiers": {
-    // Inset border size of the active pane, in pixels.
-    "border_size": 0.5,
-  },
   "title_bar": {
     "show_branch_status_icon": false,
     "show_branch_name": true,
@@ -176,50 +184,6 @@
     "show_user_picture": false,
     "show_user_menu": false,
     "show_sign_in": true,
-  },
-  "agent": {
-    "dock": "left",
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5.3-codex",
-      "enable_thinking": false,
-    },
-    "favorite_models": [
-      {
-        "provider": "copilot_chat",
-        "model": "gpt-5.3-codex",
-        "enable_thinking": false,
-      },
-      {
-        "provider": "copilot_chat",
-        "model": "claude-sonnet-4.6",
-        "enable_thinking": false,
-      },
-      {
-        "provider": "copilot_chat",
-        "model": "gpt-5.4-mini",
-        "enable_thinking": true,
-        "effort": "high",
-      },
-      {
-        "provider": "copilot_chat",
-        "model": "gpt-5.4",
-        "enable_thinking": true,
-        "effort": "high",
-      },
-      {
-        "provider": "copilot_chat",
-        "model": "gpt-5.5",
-        "enable_thinking": true,
-        "effort": "high",
-      },
-    ],
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5.3-codex",
-    },
-    "model_parameters": [],
   },
   "agent_servers": {
     "opencode": {
