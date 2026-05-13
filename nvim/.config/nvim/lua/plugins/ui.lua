@@ -76,9 +76,7 @@ return {
     ---@type snacks.Config
     opts = {
       scroll = {
-        animate = {
-          fps = 120,
-        },
+        enabled = false,
       },
       picker = {
         sources = {
