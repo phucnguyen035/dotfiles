@@ -22,11 +22,21 @@ return {
       }
 
       local navic = table.remove(opts.sections.lualine_c)
+      navic.cond = function()
+        return vim.bo.buftype ~= "terminal"
+      end
 
       -- add it to the winbar instead
       opts.winbar = {
         lualine_b = {
-          { "filename", path = 1, file_status = false },
+          {
+            "filename",
+            path = 1,
+            file_status = false,
+            cond = function()
+              return vim.bo.buftype ~= "terminal"
+            end,
+          },
         },
         lualine_c = { navic },
       }
