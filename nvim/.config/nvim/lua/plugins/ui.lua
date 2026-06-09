@@ -92,6 +92,11 @@ return {
         sources = {
           explorer = {
             hidden = true,
+            layout = {
+              layout = {
+                position = "right",
+              },
+            },
           },
         },
         win = {
@@ -109,6 +114,12 @@ return {
           },
         },
       },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    opts = {
+      max_lines = 3,
     },
   },
 }
