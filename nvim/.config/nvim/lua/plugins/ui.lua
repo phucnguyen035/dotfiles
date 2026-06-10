@@ -56,6 +56,18 @@ return {
         diff,
       }
 
+      -- show attached LSP client count on the right side
+      local lsp_count = {
+        function()
+          return tostring(#vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() }))
+        end,
+        icon = "󱘖",
+        cond = function()
+          return #vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() }) > 0
+        end,
+      }
+      table.insert(opts.sections.lualine_x, 1, lsp_count)
+
       return opts
     end,
   },
