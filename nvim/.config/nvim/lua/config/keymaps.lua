@@ -6,6 +6,8 @@ local unmap = vim.keymap.del
 -- Disable LazyVim default keymaps
 unmap("n", "<leader>wd")
 unmap("n", "<leader>wm")
+unmap("n", "H")
+unmap("n", "L")
 
 -- Additional keymaps here
 map("i", "jk", "<ESC>", { desc = "Exit insert mode", nowait = true })

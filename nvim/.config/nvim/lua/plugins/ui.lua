@@ -12,6 +12,10 @@ return {
     opts = {},
   },
   {
+    "akinsho/bufferline.nvim",
+    enabled = false,
+  },
+  {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       opts.options.disabled_filetypes.winbar = {
@@ -66,7 +70,82 @@ return {
           return #vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() }) > 0
         end,
       }
-      table.insert(opts.sections.lualine_x, 1, lsp_count)
+
+      -- distinct highlight for the harpoon line: active item bold + accent, others dim
+      local function set_harpoon_hl()
+        local ok, palette = pcall(require, "catppuccin.palettes")
+        local c = ok and palette.get_palette() or {}
+        vim.api.nvim_set_hl(0, "LualineHarpoonActive", { fg = c.peach, bold = true })
+        vim.api.nvim_set_hl(0, "LualineHarpoonInactive", { fg = c.overlay0 })
+      end
+      set_harpoon_hl()
+      vim.api.nvim_create_autocmd("ColorScheme", { callback = set_harpoon_hl })
+
+      local harpoon_line = {
+        icon = "󱘉",
+        function()
+          local list = require("harpoon"):list()
+          local cur = vim.api.nvim_buf_get_name(0)
+
+          -- split each path into segments
+          local segs = {}
+          for i, item in ipairs(list.items) do
+            local s = {}
+            for seg in item.value:gmatch("[^/]+") do
+              s[#s + 1] = seg
+            end
+            segs[i] = s
+          end
+
+          -- shortest trailing N segments of item i
+          local function suffix(i, n)
+            local s = segs[i]
+            return table.concat(s, "/", math.max(1, #s - n + 1))
+          end
+
+          local parts = {}
+          for i, item in ipairs(list.items) do
+            -- grow the suffix until it's unique among the other items
+            local depth = 1
+            while depth < #segs[i] do
+              local s = suffix(i, depth)
+              local collides = false
+              for j = 1, #list.items do
+                if j ~= i and suffix(j, depth) == s then
+                  collides = true
+                  break
+                end
+              end
+              if not collides then
+                break
+              end
+              depth = depth + 1
+            end
+            local name = suffix(i, depth)
+            local active = cur:sub(-#item.value) == item.value
+            local hl = active and "LualineHarpoonActive" or "LualineHarpoonInactive"
+            parts[#parts + 1] = ("%%#%s#%d %s%%*"):format(hl, i, name)
+          end
+          return table.concat(parts, " ")
+        end,
+      }
+
+      table.insert(opts.sections.lualine_x, 2, harpoon_line)
+      table.insert(opts.sections.lualine_x, 3, lsp_count)
+
+      opts.sections.lualine_y = { "location" }
+      opts.sections.lualine_z = {
+        {
+          -- current tab position, only when more than one tab is open
+          function()
+            return ("%d/%d"):format(vim.fn.tabpagenr(), vim.fn.tabpagenr("$"))
+          end,
+          icon = "󰓩",
+          cond = function()
+            return vim.fn.tabpagenr("$") > 1
+          end,
+        },
+      }
 
       return opts
     end,

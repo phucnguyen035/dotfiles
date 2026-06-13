@@ -6,3 +6,4 @@ vim.g.lazyvim_prettier_needs_config = true
 vim.o.winborder = "rounded"
 vim.o.wrap = true
 vim.o.exrc = true
+vim.o.showtabline = 0
