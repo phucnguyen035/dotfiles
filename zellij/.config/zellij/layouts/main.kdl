@@ -1,0 +1,45 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                // catppuccin mocha palette — change colors in one place
+                color_bg     "#1e1e2e"
+                color_fg     "#cdd6f4"
+                color_fg_dim "#6c7086"
+                color_blue   "#89b4fa"
+                color_green  "#a6e3a1"
+                color_peach  "#fab387"
+                color_yellow "#f9e2af"
+                color_mauve  "#cba6f7"
+
+                format_left   "{mode} {session} {tabs}"
+                format_center ""
+                format_right  "{datetime}"
+                format_space  "#[bg=$bg]"
+
+                hide_frame_for_single_pane "true"
+
+                mode_normal       "#[bg=$bg,fg=$green,bold] NORMAL #[bg=$bg]"
+                mode_locked       "#[bg=$bg,fg=$fg_dim,bold] LOCKED #[bg=$bg]"
+                mode_pane         "#[bg=$bg,fg=$blue,bold] PANE #[bg=$bg]"
+                mode_tab          "#[bg=$bg,fg=$blue,bold] TAB #[bg=$bg]"
+                mode_scroll       "#[bg=$bg,fg=$peach,bold] SCROLL #[bg=$bg]"
+                mode_search       "#[bg=$bg,fg=$yellow,bold] SEARCH #[bg=$bg]"
+                mode_resize       "#[bg=$bg,fg=$peach,bold] RESIZE #[bg=$bg]"
+                mode_move         "#[bg=$bg,fg=$peach,bold] MOVE #[bg=$bg]"
+                mode_rename_tab   "#[bg=$bg,fg=$yellow,bold] RENAME TAB #[bg=$bg]"
+                mode_rename_pane  "#[bg=$bg,fg=$yellow,bold] RENAME PANE #[bg=$bg]"
+                mode_session      "#[bg=$bg,fg=$mauve,bold] SESSION #[bg=$bg]"
+                mode_entersearch  "#[bg=$bg,fg=$yellow,bold] ENTER SEARCH #[bg=$bg]"
+
+                tab_normal   "#[fg=$fg_dim] {index} {name}"
+                tab_active   "#[fg=$peach,bold] {index} {name}"
+
+                datetime          "#[fg=$blue,bg=$bg,bold] 󰥔 {format} "
+                datetime_format   "%H:%M"
+                datetime_timezone "Asia/Ho_Chi_Minh"
+            }
+        }
+    }
+}
