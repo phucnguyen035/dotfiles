@@ -30,10 +30,6 @@ keybinds clear-defaults=true {
         bind "tab" { SwitchFocus; }
     }
     tab {
-        bind "left" { GoToPreviousTab; }
-        bind "down" { GoToNextTab; }
-        bind "up" { GoToPreviousTab; }
-        bind "right" { GoToNextTab; }
         bind "1" { GoToTab 1; SwitchToMode "locked"; }
         bind "2" { GoToTab 2; SwitchToMode "locked"; }
         bind "3" { GoToTab 3; SwitchToMode "locked"; }
@@ -234,13 +230,13 @@ keybinds clear-defaults=true {
         bind "Alt d" { Detach; }
         bind "Alt m" { ToggleFocusFullscreen; SwitchToMode "locked"; }
         bind "Alt n" { SwitchToMode "pane"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
+        bind "Ctrl Alt l" { GoToNextTab; }
+        bind "Ctrl Alt h" { GoToPreviousTab; }
 
         // vim zellij navigation
         bind "Ctrl h" {
             MessagePlugin "file:~/.config/zellij/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab";
+                name "move_focus";
                 payload "left";
             };
         }
@@ -258,7 +254,7 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl l" {
             MessagePlugin "file:~/.config/zellij/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab";
+                name "move_focus";
                 payload "right";
             };
         }
