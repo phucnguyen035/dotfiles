@@ -1,8 +1,23 @@
+plugins {
+  zjframes location="file:~/.config/zellij/plugins/zjframes.wasm"
+  zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm"
+}
+
+load_plugins {
+    compact-bar
+    // zjframes {
+    //     hide_frame_for_single_pane       "true"
+    //     hide_frame_except_for_search     "true"
+    //     hide_frame_except_for_scroll     "true"
+    //     hide_frame_except_for_fullscreen "true"
+    // }
+}
+
 layout {
     default_tab_template {
         children
         pane size=1 borderless=true {
-            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+            plugin location="zjstatus" {
                 // catppuccin mocha palette — change colors in one place
                 color_bg     "#1e1e2e"
                 color_fg     "#cdd6f4"
@@ -18,7 +33,7 @@ layout {
                 format_right  "{datetime}"
                 format_space  "#[bg=$bg]"
 
-                hide_frame_for_single_pane "true"
+                // hide_frame_for_single_pane "true"
 
                 mode_normal       "#[bg=$bg,fg=$green,bold] NORMAL #[bg=$bg]"
                 mode_locked       "#[bg=$bg,fg=$fg_dim,bold] LOCKED #[bg=$bg]"
