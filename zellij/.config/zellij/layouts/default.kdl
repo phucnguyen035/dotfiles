@@ -48,8 +48,8 @@ layout {
                 mode_session      "#[bg=$bg,fg=$mauve,bold] SESSION #[bg=$bg]"
                 mode_entersearch  "#[bg=$bg,fg=$yellow,bold] ENTER SEARCH #[bg=$bg]"
 
-                tab_normal   "#[fg=$fg_dim] {index} {name}"
-                tab_active   "#[fg=$peach,bold] {index} {name}"
+                tab_normal   "#[fg=$fg_dim] {name}"
+                tab_active   "#[fg=$peach,bold] [{name}]"
 
                 datetime          "#[fg=$blue,bg=$bg,bold] 󰥔 {format} "
                 datetime_format   "%H:%M"
