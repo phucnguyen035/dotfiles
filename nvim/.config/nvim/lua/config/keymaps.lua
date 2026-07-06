@@ -29,3 +29,14 @@ map("n", "<leader>qq", "<cmd>qall<cr>", { desc = "Quit all" })
 map("n", "<leader>r", "<cmd>e<cr>", { desc = "Reload file" })
 map("n", "<leader>R", "<cmd>e!<cr>", { desc = "Reload file (force)", silent = true, nowait = true })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
+
+-- tabs
+unmap("n", "<leader><tab>[")
+unmap("n", "<leader><tab>]")
+unmap("n", "<leader><tab>f")
+unmap("n", "<leader><tab>l")
+
+map("n", "[<tab>", "<cmd>tabnext<cr>", { desc = "Next tab" })
+map("n", "]<tab>", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+map("n", "<leader><tab>1", "<cmd>tabfirst<cr>", { desc = "First tab" })
+map("n", "<leader><tab>0", "<cmd>tablast<cr>", { desc = "Last tab" })
