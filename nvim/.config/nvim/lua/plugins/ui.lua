@@ -25,6 +25,9 @@ return {
         "sidekick_terminal",
       }
 
+      opts.options.section_separators = { left = "", right = "" }
+      opts.options.component_separators = ""
+
       local navic = table.remove(opts.sections.lualine_c)
       navic.cond = function()
         return vim.bo.buftype ~= "terminal"
