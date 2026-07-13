@@ -1,5 +1,5 @@
 theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-command = /opt/homebrew/bin/fish -l -c "zellij -l welcome"
+#command = /opt/homebrew/bin/fish -l -c "zellij -l welcome"
 shell-integration = fish
 shell-integration-features = true
 adjust-cell-height = 10%
@@ -7,13 +7,15 @@ window-padding-x = 10
 window-height = 50
 window-width = 200
 
-font-family = MonoLisa
-font-size = 15
-font-thicken = true
-font-feature = +ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga
-font-variation = wght=300
-font-variation-bold = wght=700
-font-variation-italic = wght=300
+font-size = 16
+font-family = Maple Mono Normal NL
+
+#font-family = MonoLisa
+#font-thicken = true
+#font-feature = +ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga
+#font-variation = wght=300
+#font-variation-bold = wght=700
+#font-variation-italic = wght=300
 
 custom-shader = ./shaders/cursor_warp.glsl
 
