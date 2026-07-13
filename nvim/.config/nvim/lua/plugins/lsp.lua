@@ -40,4 +40,28 @@ return {
       },
     },
   },
+  {
+    "r4ppz/lspeek.nvim",
+    opts = {
+      window = {
+        border = "rounded",
+      },
+    },
+    keys = {
+      {
+        "gD",
+        function()
+          require("lspeek").peek_definition()
+        end,
+        desc = "Peek Definition (lspeek)",
+      },
+      {
+        "gT",
+        function()
+          require("lspeek").peek_type_definition()
+        end,
+        desc = "Peek Type Definition (lspeek)",
+      },
+    },
+  },
 }
