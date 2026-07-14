@@ -149,12 +149,14 @@ keybinds clear-defaults=true {
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
-        // bind "Alt f" { ToggleFloatingPanes; }
+        // bind "Alt f" { ToggleFloatingPanes; SwitchToMode "locked"; }
         // bind "Alt h" { MoveFocusOrTab "left"; }
         // bind "Alt j" { MoveFocus "down"; }
         // bind "Alt k" { MoveFocus "up"; }
         // bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
+        bind "Alt n" { NewPane "stacked"; SwitchToMode "locked" }
+        bind "Alt t" { NewTab; SwitchToMode "locked" }
+        bind "Alt x" { CloseFocus; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
@@ -228,8 +230,8 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
         bind "Alt d" { Detach; }
-        bind "Alt m" { ToggleFocusFullscreen; SwitchToMode "locked"; }
-        bind "Alt n" { SwitchToMode "pane"; }
+        bind "Alt m" { ToggleFocusFullscreen; }
+        bind "Alt f" { ToggleFloatingPanes; }
         bind "Ctrl Alt l" { GoToNextTab; }
         bind "Ctrl Alt h" { GoToPreviousTab; }
 
