@@ -12,6 +12,21 @@ return {
     opts = {},
   },
   {
+    "nvim-mini/mini.icons",
+    opts = {
+      extension = {
+        ["test.ts"] = { glyph = "󰙨", hl = "MiniIconsAzure" },
+        ["test.tsx"] = { glyph = "󰙨", hl = "MiniIconsAzure" },
+        ["test.js"] = { glyph = "󰙨", hl = "MiniIconsYellow" },
+        ["test.jsx"] = { glyph = "󰙨", hl = "MiniIconsYellow" },
+        ["spec.ts"] = { glyph = "󰙨", hl = "MiniIconsAzure" },
+        ["spec.tsx"] = { glyph = "󰙨", hl = "MiniIconsAzure" },
+        ["spec.js"] = { glyph = "󰙨", hl = "MiniIconsYellow" },
+        ["spec.jsx"] = { glyph = "󰙨", hl = "MiniIconsYellow" },
+      },
+    },
+  },
+  {
     "akinsho/bufferline.nvim",
     enabled = false,
   },
@@ -28,26 +43,6 @@ return {
       opts.options.section_separators = { left = "", right = "" }
       opts.options.component_separators = ""
 
-      local navic = table.remove(opts.sections.lualine_c)
-      navic.cond = function()
-        return vim.bo.buftype ~= "terminal"
-      end
-
-      -- add it to the winbar instead
-      opts.winbar = {
-        lualine_b = {
-          {
-            "filename",
-            path = 1,
-            file_status = false,
-            cond = function()
-              return vim.bo.buftype ~= "terminal"
-            end,
-          },
-        },
-        lualine_c = { navic },
-      }
-
       opts.sections.lualine_a = {
         {
           "mode",
@@ -55,12 +50,6 @@ return {
             return str:sub(1, 1)
           end,
         },
-      }
-
-      local diff = table.remove(opts.sections.lualine_x)
-
-      opts.sections.lualine_c = {
-        diff,
       }
 
       -- show attached LSP client count on the right side
@@ -149,6 +138,28 @@ return {
           end,
         },
       }
+
+      -- in terminal buffers keep only sections a/b/y (mode, branch, location);
+      -- hide everything in c/x/z (filename, navic breadcrumbs, git, tabs, …)
+      local function hide_in_terminal(section)
+        for i, comp in ipairs(section) do
+          if type(comp) ~= "table" then
+            comp = { comp }
+            section[i] = comp
+          end
+          local prev = comp.cond
+          comp.cond = function()
+            if vim.bo.buftype == "terminal" then
+              return false
+            end
+            return prev == nil or prev()
+          end
+        end
+      end
+
+      hide_in_terminal(opts.sections.lualine_c)
+      hide_in_terminal(opts.sections.lualine_x)
+      hide_in_terminal(opts.sections.lualine_z)
 
       return opts
     end,
