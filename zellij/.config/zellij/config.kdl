@@ -154,8 +154,8 @@ keybinds clear-defaults=true {
         // bind "Alt j" { MoveFocus "down"; }
         // bind "Alt k" { MoveFocus "up"; }
         // bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane "stacked"; SwitchToMode "locked" }
-        bind "Alt t" { NewTab; SwitchToMode "locked" }
+        bind "Alt n" { NewPane "stacked"; SwitchToMode "locked"; }
+        bind "Alt t" { NewTab; SwitchToMode "locked"; }
         bind "Alt x" { CloseFocus; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt o" { MoveTab "right"; }
