@@ -3,6 +3,7 @@ return {
   opts = {
     spec = {
       { "<leader>w", proxy = false },
+      { "<leader>a", group = "agent", icon = "󰚩" },
     },
   },
 }
