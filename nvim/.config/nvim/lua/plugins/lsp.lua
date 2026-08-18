@@ -5,9 +5,9 @@ return {
     opts = {
       setup = {},
       servers = {
-        tsgo = {
+        tsc = {
           settings = {
-            typescript = {
+            ["js/ts"] = {
               inlayHints = {
                 enumMemberValues = {
                   enabled = false,
