@@ -26,3 +26,4 @@ keybind = shift+enter=text:\x1b\r
 # conflict with zellij
 keybind = alt+left=unbind
 keybind = alt+right=unbind
+keybind = super+r=prompt_tab_title
