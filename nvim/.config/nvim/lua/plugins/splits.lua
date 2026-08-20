@@ -5,6 +5,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     opts = {
       ignored_filetypes = { "snacks_picker_list" },
+      at_edge = "stop",
     },
     keys = {
       {
@@ -37,30 +38,30 @@ return {
           require("smart-splits").move_cursor_previous()
         end,
       },
-      {
-        "<A-h>",
-        function()
-          require("smart-splits").resize_left()
-        end,
-      },
-      {
-        "<A-l>",
-        function()
-          require("smart-splits").resize_right()
-        end,
-      },
-      {
-        "<A-j>",
-        function()
-          require("smart-splits").resize_down()
-        end,
-      },
-      {
-        "<A-k>",
-        function()
-          require("smart-splits").resize_up()
-        end,
-      },
+      -- {
+      --   "<A-h>",
+      --   function()
+      --     require("smart-splits").resize_left()
+      --   end,
+      -- },
+      -- {
+      --   "<A-l>",
+      --   function()
+      --     require("smart-splits").resize_right()
+      --   end,
+      -- },
+      -- {
+      --   "<A-j>",
+      --   function()
+      --     require("smart-splits").resize_down()
+      --   end,
+      -- },
+      -- {
+      --   "<A-k>",
+      --   function()
+      --     require("smart-splits").resize_up()
+      --   end,
+      -- },
     },
   },
 }
