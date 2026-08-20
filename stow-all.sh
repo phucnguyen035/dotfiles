@@ -3,7 +3,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET="${HOME}"
-PACKAGES=(nvim zellij ghostty agents fish)
+PACKAGES=(nvim zellij ghostty agents fish herdr)
 STOW_ARGS=()
 
 usage() {

@@ -8,6 +8,7 @@ Current packages:
 - `zellij`
 - `ghostty`
 - `agents`
+- `herdr`
 
 ## 1) Install Stow
 
@@ -22,7 +23,7 @@ brew install stow
 From this repo root (`~/dotfiles`):
 
 ```bash
-stow --target="$HOME" nvim zellij ghostty agents fish
+stow --target="$HOME" nvim zellij ghostty agents fish herdr
 ```
 
 That creates symlinks like:
@@ -33,7 +34,7 @@ That creates symlinks like:
 ## 3) Safe dry-run before applying
 
 ```bash
-stow --simulate --verbose --target="$HOME" nvim zellij ghostty agents fish
+stow --simulate --verbose --target="$HOME" nvim zellij ghostty agents fish herdr
 ```
 
 Use this whenever you are unsure about conflicts.
@@ -43,13 +44,13 @@ Use this whenever you are unsure about conflicts.
 If package contents change, restow it:
 
 ```bash
-stow -R --target="$HOME" nvim zellij ghostty agents fish
+stow -R --target="$HOME" nvim zellij ghostty agents fish herdr
 ```
 
 ## 5) Remove symlinks (unstow)
 
 ```bash
-stow -D --target="$HOME" nvim zellij ghostty agents fish
+stow -D --target="$HOME" nvim zellij ghostty agents fish herdr
 ```
 
 ## 6) If Stow reports conflicts
@@ -65,7 +66,7 @@ Typical flow:
 If you want to absorb existing files into this repo instead:
 
 ```bash
-stow --adopt --target="$HOME" nvim zellij ghostty agents fish
+stow --adopt --target="$HOME" nvim zellij ghostty agents fish herdr
 ```
 
 Then review what changed in git to make sure adopted files are correct.
