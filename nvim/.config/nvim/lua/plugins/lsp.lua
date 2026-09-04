@@ -86,7 +86,7 @@ return {
     ---@type PluginLspOpts
     opts = {
       codelens = {
-        enabled = true,
+        enabled = false,
       },
       servers = {
         -- Keep `<C-k>` as the digraph key in insert mode. Appended to LazyVim's
