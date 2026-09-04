@@ -5,7 +5,9 @@ agent_panel_sort = "spaces"
 hide_tab_bar_when_single_tab = true
 status_indicators = "symbols"
 pane_borders = true
+pane_outer_borders = false
 pane_gaps = false
+sidebar_collapsed_mode = "hidden"
 
 [ui.toast]
 delivery = "herdr"
@@ -14,6 +16,12 @@ delivery = "herdr"
 prefix = "ctrl+a"
 switch_workspace = "prefix+shift+1..9"
 focus_agent = "prefix+alt+1..9"
+navigate_workspace_down = "shift+j"
+navigate_workspace_up = "shift+k"
+swap_pane_left = "prefix+alt+h"
+swap_pane_right = "prefix+alt+l"
+swap_pane_up = "prefix+alt+k"
+swap_pane_down = "prefix+alt+j"
 
 [experimental]
 pane_history = false

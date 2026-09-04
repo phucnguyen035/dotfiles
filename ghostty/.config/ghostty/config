@@ -27,3 +27,7 @@ keybind = shift+enter=text:\x1b\r
 keybind = alt+left=unbind
 keybind = alt+right=unbind
 keybind = super+r=prompt_tab_title
+# conflict with herdr prefix (ctrl+a): defaults send \x01 / \x05
+# Change to Home/End
+keybind = super+arrow_left=text:\x1b[H
+keybind = super+arrow_right=text:\x1b[F
