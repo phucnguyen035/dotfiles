@@ -8,6 +8,8 @@ pane_borders = true
 pane_outer_borders = false
 pane_gaps = false
 sidebar_collapsed_mode = "hidden"
+sidebar_width = 32
+sidebar_max_width = 64
 
 [ui.toast]
 delivery = "herdr"
@@ -28,7 +30,25 @@ pane_history = false
 
 [theme]
 name = "catppuccin"
-auto_switch = false
+auto_switch = true
+light_name = "catppuccin-latte"
+dark_name = "catppuccin"
+
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+description = "run lazygit"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
 
 ### HERDR WORKTRUNK PLUGIN ###
 # Override herdr's built-in "new worktree" key (prefix+shift+g) with worktrunk's
