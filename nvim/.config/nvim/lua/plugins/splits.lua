@@ -3,6 +3,8 @@
 return {
   {
     "mrjones2014/smart-splits.nvim",
+    -- v3 dropped the herdr backend and herdr-plugin.toml
+    tag = "v2.1.1-final",
     opts = {
       ignored_filetypes = { "snacks_picker_list" },
       at_edge = "stop",

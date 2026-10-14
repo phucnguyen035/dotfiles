@@ -113,6 +113,23 @@ return {
             },
           },
         },
+        -- Defined here instead of LazyVim's `lang.typescript.oxc` extra: its
+        -- `oxlint` `root_dir` misses Vite+ projects (`lint:` in
+        -- `vite.config.ts`), and it adds `oxfmt` to conform for every JS/TS file.
+        -- The lspconfig defaults only attach where the project uses Oxc.
+        oxlint = {
+          settings = {
+            fixKind = "all",
+          },
+        },
+        oxfmt = {},
+        -- Configure formatting separately
+        vtsls = {
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
+        },
       },
     },
   },
@@ -120,12 +137,18 @@ return {
     "neovim/nvim-lspconfig",
     ---@param opts PluginLspOpts
     opts = function(_, opts)
+      -- LazyVim's `lang.typescript` extra picks one TypeScript server and sets
+      -- `enabled = false` on the rest. The gates below pick per project, so both
+      -- have to stay enabled and let the version decide which one attaches.
+      opts.servers.tsc.enabled = true
+
       -- Only the gates need a function: `gated_root_dir` has to run here.
       opts.servers.tsc.root_dir = gated_root_dir("tsc", function(_, dir, cb)
         ts_modern(dir, cb)
       end)
 
       opts.servers.vtsls = opts.servers.vtsls or {}
+      opts.servers.vtsls.enabled = true
       opts.servers.vtsls.root_dir = gated_root_dir("vtsls", function(_, dir, cb)
         ts_modern(dir, function(modern)
           cb(not modern)
