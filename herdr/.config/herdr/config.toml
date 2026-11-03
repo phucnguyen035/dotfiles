@@ -5,15 +5,13 @@ agent_panel_sort = "spaces"
 hide_tab_bar_when_single_tab = true
 status_indicators = "symbols"
 pane_borders = true
-pane_outer_borders = false
-pane_gaps = false
+pane_outer_borders = true
+pane_gaps = true
 sidebar_collapsed_mode = "hidden"
-sidebar_width = 32
+sidebar_width = 44
 sidebar_max_width = 64
 
-tab_bar_right = [
-  { type = "datetime", format = "%H:%M" },
-]
+tab_bar_right = [{ type = "datetime", format = "%H:%M" }]
 tab_bar_right_separator = " · "
 
 [ui.toast]
@@ -23,8 +21,14 @@ delivery = "herdr"
 row_gap = 1
 
 rows = [
-  ["state_icon", "workspace", "tab"],
-  ["terminal_title_stripped"],
+  [
+    "state_icon",
+    { token = "terminal_title_stripped", fg = "#cdd6f4", bold = true },
+  ],
+  [
+    { token = "workspace", bold = false, dim = true },
+    "tab",
+  ],
 ]
 
 [keys]
