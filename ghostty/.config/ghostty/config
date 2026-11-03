@@ -7,15 +7,11 @@ window-padding-x = 10
 window-height = 50
 window-width = 200
 
-font-size = 16
-font-family = Maple Mono Normal
-
-#font-family = MonoLisa
-#font-thicken = true
-#font-feature = +ss04, +ss07, +ss08, +ss15, +ss16, +zero, -liga
-#font-variation = wght=300
-#font-variation-bold = wght=700
-#font-variation-italic = wght=300
+font-size = 14
+font-family = Maple Mono Normal NF
+font-feature = -calt, cv01, cv02, zero
+font-variation-italic = wght=200
+font-thicken = true
 
 custom-shader = ./shaders/cursor_warp.glsl
 
